@@ -107,10 +107,10 @@ namespace igl
         return t1 > 0 ? t1 : INFINITY;
       }
     }
-
+  
     IGL_INLINE double get_min_pos_root_2D(const Eigen::MatrixXd& uv,
                                           const Eigen::MatrixXi& F,
-                                          Eigen::MatrixXd& d,
+                                          const Eigen::MatrixXd& d,
                                           int f)
     {
       using namespace std;
@@ -153,19 +153,19 @@ namespace igl
 
       int v1 = F(f,0); int v2 = F(f,1); int v3 = F(f,2);
       // get quadratic coefficients (ax^2 + b^x + c)
-      const double& U11 = uv(v1,0);
-      const double& U12 = uv(v1,1);
-      const double& U21 = uv(v2,0);
-      const double& U22 = uv(v2,1);
-      const double& U31 = uv(v3,0);
-      const double& U32 = uv(v3,1);
+      double U11 = uv(v1,0);
+      double U12 = uv(v1,1);
+      double U21 = uv(v2,0);
+      double U22 = uv(v2,1);
+      double U31 = uv(v3,0);
+      double U32 = uv(v3,1);
 
-      const double& V11 = d(v1,0);
-      const double& V12 = d(v1,1);
-      const double& V21 = d(v2,0);
-      const double& V22 = d(v2,1);
-      const double& V31 = d(v3,0);
-      const double& V32 = d(v3,1);
+      double V11 = d(v1,0);
+      double V12 = d(v1,1);
+      double V21 = d(v2,0);
+      double V22 = d(v2,1);
+      double V31 = d(v3,0);
+      double V32 = d(v3,1);
 
       double a = V11*V22 - V12*V21 - V11*V32 + V12*V31 + V21*V32 - V22*V31;
       double b = U11*V22 - U12*V21 - U21*V12 + U22*V11 - U11*V32 + U12*V31 + U31*V12 - U32*V11 + U21*V32 - U22*V31 - U31*V22 + U32*V21;
@@ -176,7 +176,7 @@ namespace igl
 
     IGL_INLINE double get_min_pos_root_3D(const Eigen::MatrixXd& uv,
                                           const Eigen::MatrixXi& F,
-                                          Eigen::MatrixXd& direc,
+                                          const Eigen::MatrixXd& direc,
                                           int f)
     {
       using namespace std;
@@ -205,31 +205,31 @@ namespace igl
             [coefficients,terms] = coeffs(det(vol_det),t); % terms = [ t^3, t^2, t, 1], Coefficients hold the coeff we seek
       */
       int v1 = F(f,0); int v2 = F(f,1); int v3 = F(f,2); int v4 = F(f,3);
-      const double& a_x = uv(v1,0);
-      const double& a_y = uv(v1,1);
-      const double& a_z = uv(v1,2);
-      const double& b_x = uv(v2,0);
-      const double& b_y = uv(v2,1);
-      const double& b_z = uv(v2,2);
-      const double& c_x = uv(v3,0);
-      const double& c_y = uv(v3,1);
-      const double& c_z = uv(v3,2);
-      const double& d_x = uv(v4,0);
-      const double& d_y = uv(v4,1);
-      const double& d_z = uv(v4,2);
+      double a_x = uv(v1,0);
+      double a_y = uv(v1,1);
+      double a_z = uv(v1,2);
+      double b_x = uv(v2,0);
+      double b_y = uv(v2,1);
+      double b_z = uv(v2,2);
+      double c_x = uv(v3,0);
+      double c_y = uv(v3,1);
+      double c_z = uv(v3,2);
+      double d_x = uv(v4,0);
+      double d_y = uv(v4,1);
+      double d_z = uv(v4,2);
 
-      const double& a_dx = direc(v1,0);
-      const double& a_dy = direc(v1,1);
-      const double& a_dz = direc(v1,2);
-      const double& b_dx = direc(v2,0);
-      const double& b_dy = direc(v2,1);
-      const double& b_dz = direc(v2,2);
-      const double& c_dx = direc(v3,0);
-      const double& c_dy = direc(v3,1);
-      const double& c_dz = direc(v3,2);
-      const double& d_dx = direc(v4,0);
-      const double& d_dy = direc(v4,1);
-      const double& d_dz = direc(v4,2);
+      double a_dx = direc(v1,0);
+      double a_dy = direc(v1,1);
+      double a_dz = direc(v1,2);
+      double b_dx = direc(v2,0);
+      double b_dy = direc(v2,1);
+      double b_dz = direc(v2,2);
+      double c_dx = direc(v3,0);
+      double c_dy = direc(v3,1);
+      double c_dz = direc(v3,2);
+      double d_dx = direc(v4,0);
+      double d_dy = direc(v4,1);
+      double d_dz = direc(v4,2);
 
       // Find solution for: a*t^3 + b*t^2 + c*d +d = 0
       double a = a_dx*b_dy*c_dz - a_dx*b_dz*c_dy - a_dy*b_dx*c_dz + a_dy*b_dz*c_dx + a_dz*b_dx*c_dy - a_dz*b_dy*c_dx - a_dx*b_dy*d_dz + a_dx*b_dz*d_dy + a_dy*b_dx*d_dz - a_dy*b_dz*d_dx - a_dz*b_dx*d_dy + a_dz*b_dy*d_dx + a_dx*c_dy*d_dz - a_dx*c_dz*d_dy - a_dy*c_dx*d_dz + a_dy*c_dz*d_dx + a_dz*c_dx*d_dy - a_dz*c_dy*d_dx - b_dx*c_dy*d_dz + b_dx*c_dz*d_dy + b_dy*c_dx*d_dz - b_dy*c_dz*d_dx - b_dz*c_dx*d_dy + b_dz*c_dy*d_dx;
