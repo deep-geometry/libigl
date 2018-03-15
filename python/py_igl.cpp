@@ -39,7 +39,7 @@
 #include <igl/cut_mesh_from_singularities.h>
 #include <igl/decimate.h>
 #include <igl/deform_skeleton.h>
-#include <igl/dirac.h>
+#include <igl/dirac_operator.h>
 #include <igl/directed_edge_orientations.h>
 #include <igl/directed_edge_parents.h>
 #include <igl/doublearea.h>
