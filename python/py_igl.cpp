@@ -39,6 +39,7 @@
 #include <igl/cut_mesh_from_singularities.h>
 #include <igl/decimate.h>
 #include <igl/deform_skeleton.h>
+#include <igl/dirac.h>
 #include <igl/directed_edge_orientations.h>
 #include <igl/directed_edge_parents.h>
 #include <igl/doublearea.h>
@@ -139,6 +140,7 @@ void python_export_igl(py::module &m)
 #include "py_igl/py_cut_mesh_from_singularities.cpp"
 #include "py_igl/py_decimate.cpp"
 #include "py_igl/py_deform_skeleton.cpp"
+#include "py_igl/py_dirac.cpp"
 #include "py_igl/py_directed_edge_orientations.cpp"
 #include "py_igl/py_directed_edge_parents.cpp"
 #include "py_igl/py_doublearea.cpp"
