@@ -9,10 +9,10 @@ m.def("remove_unreferenced", []
 (
   const Eigen::MatrixXd& V,
   const Eigen::MatrixXi& F,
-   Eigen::MatrixXd& NV,
-   Eigen::MatrixXi& NF,
+  Eigen::MatrixXd& NV,
+  Eigen::MatrixXi& NF,
   Eigen::MatrixXi& I,
-  Eigen::MatrixXi& J,
+  Eigen::MatrixXi& J
 )
 {
   return igl::remove_unreferenced(V, F, NV, NF, I, J);
