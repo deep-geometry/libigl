@@ -127,4 +127,5 @@ extern const char *__doc_igl_winding_number_2;
 extern const char *__doc_igl_writeMESH;
 extern const char *__doc_igl_writeOBJ;
 extern const char *__doc_igl_writePLY;
+extern const char *__doc_igl_write_triangle_mesh;
 extern const char *__doc_igl_readPLY;
