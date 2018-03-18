@@ -635,6 +635,13 @@ const char *__doc_igl_exact_geodesic = R"igl_Qu8mg5v7(
     // Note:  
     //      Specifying a face as target/source means its center.  
     //)igl_Qu8mg5v7";
+const char *__doc_igl_facet_components = R"igl_Qu8mg5v7(// Compute connected components of facets based on edge-edge adjacency.
+  //
+  // Inputs:
+  //   F  #F by 3 list of triangle indices
+  // Outputs:
+  //   C  #F list of connected component ids
+  //)igl_Qu8mg5v7";
 const char *__doc_igl_find_cross_field_singularities = R"igl_Qu8mg5v7(// Inputs:
   //   V                #V by 3 eigen Matrix of mesh vertex 3D positions
   //   F                #F by 3 eigen Matrix of face (quad) indices
@@ -1193,6 +1200,18 @@ const char *__doc_igl_remove_duplicate_vertices = R"igl_Qu8mg5v7(// REMOVE_DUPLI
   //   [SV,SVI,SVJ] = remove_duplicate_vertices(V,1e-7);
   //   % remap faces
   //   SF = SVJ(F);
+  //)igl_Qu8mg5v7";
+const char *__doc_igl_remove_unreferenced = R"igl_Qu8mg5v7(  // Remove unreferenced vertices from V, updating F accordingly
+  //
+  // Input:
+  //   V  #V by dim list of mesh vertex positions
+  //   F  #F by ss list of simplices (Values of -1 are quitely skipped)
+  // Outputs:
+  //   NV  #NV by dim list of mesh vertex positions
+  //   NF  #NF by ss list of simplices
+  //   IM  #V by 1 list of indices such that: NF = IM(F) and NT = IM(T)
+  //      and V(find(IM<=size(NV,1)),:) = NV
+  //
   //)igl_Qu8mg5v7";
 const char *__doc_igl_rotate_vectors = R"igl_Qu8mg5v7(// Rotate the vectors V by A radiants on the tangent plane spanned by B1 and
   // B2

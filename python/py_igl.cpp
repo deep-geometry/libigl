@@ -47,6 +47,7 @@
 #include <igl/edge_topology.h>
 #include <igl/eigs.h>
 #include <igl/exact_geodesic.h>
+#include <igl/facet_components.h>
 #include <igl/find_cross_field_singularities.h>
 #include <igl/fit_rotations.h>
 #include <igl/floor.h>
@@ -86,6 +87,7 @@
 #include <igl/readTGF.h>
 #include <igl/read_triangle_mesh.h>
 #include <igl/remove_duplicate_vertices.h>
+#include <igl/remove_unreferenced.h>
 #include <igl/rotate_vectors.h>
 #include <igl/setdiff.h>
 #include <igl/signed_distance.h>
@@ -147,6 +149,7 @@ void python_export_igl(py::module &m)
 #include "py_igl/py_edge_topology.cpp"
 #include "py_igl/py_eigs.cpp"
 #include "py_igl/py_exact_geodesic.cpp"
+#include "py_igl/py_facet_components.cpp"
 #include "py_igl/py_find_cross_field_singularities.cpp"
 #include "py_igl/py_fit_rotations.cpp"
 #include "py_igl/py_floor.cpp"
@@ -185,6 +188,7 @@ void python_export_igl(py::module &m)
 #include "py_igl/py_readOFF.cpp"
 #include "py_igl/py_readTGF.cpp"
 #include "py_igl/py_read_triangle_mesh.cpp"
+#include "py_igl/py_remove_unreferenced.cpp"
 #include "py_igl/py_remove_duplicate_vertices.cpp"
 #include "py_igl/py_rotate_vectors.cpp"
 #include "py_igl/py_setdiff.cpp"
