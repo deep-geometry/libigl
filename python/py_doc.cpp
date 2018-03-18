@@ -1498,6 +1498,18 @@ const char *__doc_igl_readPLY= R"igl_Qu8mg5v7(// Read a mesh from an ascii ply f
   //   N  double matrix of corner normals #N by 3
   //   UV #V by 2 texture coordinates
   // Returns true on success, false on errors)igl_Qu8mg5v7";
+const char *__doc_igl_write_triangle_mesh = R"igl_Qu8mg5v7(// write mesh to an ascii file with automatic detection of file format.
+  // supported: obj, off, stl, wrl, ply, mesh)
+  //
+  // Templates:
+  //   Scalar  type for positions and vectors (will be read as double and cast
+  //     to Scalar)
+  //   Index  type for indices (will be read as int and cast to Index)
+  // Inputs:
+  //   str  path to file
+  //   V  eigen double matrix #V by 3
+  //   F  eigen int matrix #F by 3
+  // Returns true iff success)igl_Qu8mg5v7";
 const char *__doc_igl_seam_edges=R"igl_Qu8mg5v7(// Finds all UV-space boundaries of a mesh.
   //
   // Inputs:
