@@ -17,11 +17,11 @@ dependencies = ["glfw"]
 check_dependencies(dependencies)
 
 
-V1 = igl.eigen.MatrixXd()
-F1 = igl.eigen.MatrixXi()
+V1 = None
+F1 = None
 
-V2 = igl.eigen.MatrixXd()
-F2 = igl.eigen.MatrixXi()
+V2 = None
+F2 = None
 
 def key_pressed(viewer, key, modifier):
     print("Key: ", chr(key))
@@ -42,8 +42,8 @@ def key_pressed(viewer, key, modifier):
 
 
 #  Load two meshes
-igl.readOFF(TUTORIAL_SHARED_PATH + "bumpy.off", V1, F1)
-igl.readOFF(TUTORIAL_SHARED_PATH + "fertility.off", V2, F2)
+V1, F1, _ = igl.readOFF(TUTORIAL_SHARED_PATH + "bumpy.off")
+V2, F2, _ = igl.readOFF(TUTORIAL_SHARED_PATH + "fertility.off")
 
 print("1 Switch to bump mesh")
 print("2 Switch to fertility mesh")

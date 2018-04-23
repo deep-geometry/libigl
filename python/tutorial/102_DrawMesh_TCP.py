@@ -20,9 +20,7 @@ from shared import TUTORIAL_SHARED_PATH
 # Make sure to launch the tcpviewer.py first
 
 # Read a mesh
-V = igl.eigen.MatrixXd()
-F = igl.eigen.MatrixXi()
-igl.readOFF(TUTORIAL_SHARED_PATH + "beetle.off", V, F)
+V,F,_ = igl.readOFF(TUTORIAL_SHARED_PATH + "beetle.off")
 
 # Send it to the viewer
 viewer = tcpviewer.TCPViewer()

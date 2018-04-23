@@ -15,9 +15,9 @@ from shared import TUTORIAL_SHARED_PATH
 
 
 # Load a mesh in OFF format
-V = igl.eigen.MatrixXd()
-F = igl.eigen.MatrixXi()
-igl.readOFF(TUTORIAL_SHARED_PATH + "cube.off", V, F)
+# V = igl.eigen.MatrixXd()
+# F = igl.eigen.MatrixXi()
+V,F,_ = igl.readOFF(TUTORIAL_SHARED_PATH + "cube.off")
 
 # Print the vertices and faces matrices (commented out to make this file compatible with python 2.x and 3.x)
 # print("Vertices: \n", V, sep='')

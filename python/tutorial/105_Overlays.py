@@ -16,19 +16,19 @@ from shared import TUTORIAL_SHARED_PATH, check_dependencies
 dependencies = ["glfw"]
 check_dependencies(dependencies)
 
-
-V = igl.eigen.MatrixXd()
-F = igl.eigen.MatrixXi()
+import numpy as np
 
 # Load a mesh in OFF format
-igl.readOFF(TUTORIAL_SHARED_PATH + "bunny.off", V, F)
+V,F,_=igl.readOFF(TUTORIAL_SHARED_PATH + "bunny.off")
 
 # Find the bounding box
-m = V.colwiseMinCoeff()
-M = V.colwiseMaxCoeff()
+m = np.min(V,axis=0)
+m.resize(1,3)
+M = np.max(V,axis=0)
+M.resize(1,3)
 
 # Corners of the bounding box
-V_box = igl.eigen.MatrixXd(
+V_box = np.asarray(
     [
         [m[0, 0], m[0, 1], m[0, 2]],
         [M[0, 0], m[0, 1], m[0, 2]],
@@ -40,8 +40,7 @@ V_box = igl.eigen.MatrixXd(
         [m[0, 0], M[0, 1], M[0, 2]]
     ]
 )
-
-E_box = igl.eigen.MatrixXd(
+E_box = np.asarray(
         [
             [0, 1],
             [1, 2],
@@ -56,21 +55,22 @@ E_box = igl.eigen.MatrixXd(
             [2, 6],
             [7, 3]
         ]
-).castint()
+)
 
 # Plot the mesh
 viewer = igl.glfw.Viewer()
 viewer.data().set_mesh(V, F)
 
 # Plot the corners of the bounding box as points
-viewer.data().add_points(V_box, igl.eigen.MatrixXd([[1, 0, 0]]))
+viewer.data().add_points(V_box, ([[1, 0, 0]]))
 
+# import pdb;pdb.set_trace()
 # Plot the edges of the bounding box
-for i in range(0, E_box.rows()):
+for i in range(E_box.shape[0]):
     viewer.data().add_edges(
-        V_box.row(E_box[i, 0]),
-        V_box.row(E_box[i, 1]),
-        igl.eigen.MatrixXd([[1, 0, 0]]))
+        np.resize(V_box[(E_box[i, 0]),:],(1,3)),
+        np.resize(V_box[(E_box[i, 1]),:],(1,3)),
+        ([[1, 0, 0]]))
 
 # Plot labels with the coordinates of bounding box vertices
 l1 = 'x: ' + str(m[0, 0]) + ' y: ' + str(m[0, 1]) + ' z: ' + str(m[0, 2])

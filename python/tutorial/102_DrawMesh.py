@@ -17,9 +17,7 @@ dependencies = ["glfw"]
 check_dependencies(dependencies)
 
 # Load a mesh in OFF format
-V = igl.eigen.MatrixXd()
-F = igl.eigen.MatrixXi()
-igl.readOFF(TUTORIAL_SHARED_PATH + "beetle.off", V, F)
+V,F, _ = igl.readOFF(TUTORIAL_SHARED_PATH + "beetle.off")
 
 # Plot the mesh
 viewer = igl.glfw.Viewer()

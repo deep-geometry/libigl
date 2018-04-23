@@ -625,9 +625,9 @@ void python_export_vector(py::module &m) {
 
     // bind_eigen_sparse_2< Eigen::SparseMatrix<int> > (me, "SparseMatrixi");
 
-    bind_eigen_diagonal_2< Eigen::DiagonalMatrix<double,Eigen::Dynamic,Eigen::Dynamic> > (me, "DiagonalMatrixd");
+    // bind_eigen_diagonal_2< Eigen::DiagonalMatrix<double,Eigen::Dynamic,Eigen::Dynamic> > (me, "DiagonalMatrixd");
 
-    bind_eigen_diagonal_2< Eigen::DiagonalMatrix<int,Eigen::Dynamic,Eigen::Dynamic> > (me, "DiagonalMatrixi");
+    // bind_eigen_diagonal_2< Eigen::DiagonalMatrix<int,Eigen::Dynamic,Eigen::Dynamic> > (me, "DiagonalMatrixi");
 
     py::class_<Eigen::SimplicialLLT<Eigen::SparseMatrix<double > >> simpliciallltsparse(me, "SimplicialLLTsparse");
 
