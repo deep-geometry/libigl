@@ -8,10 +8,11 @@
 
 m.def("readDMAT", []
 (
-  const std::string str,
-  Eigen::MatrixXd& W
+  const std::string str
 )
 {
-  return igl::readDMAT(str,W);
+  Eigen::MatrixXd W;
+  igl::readDMAT(str,W);
+  return W;
 }, __doc_igl_readDMAT,
-py::arg("str"), py::arg("W"));
+py::arg("str"));

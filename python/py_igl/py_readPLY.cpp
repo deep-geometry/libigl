@@ -7,13 +7,14 @@
 // obtain one at http://mozilla.org/MPL/2.0/.
 m.def("readPLY", []
 (
-  const std::string str,
-  Eigen::MatrixXd& V,
-  Eigen::MatrixXi& F,
-  Eigen::MatrixXd& N,
-  Eigen::MatrixXd& UV
+  const std::string str
 )
 {
-  return igl::readPLY(str,V,F,N,UV);
+  Eigen::MatrixXd V;
+  Eigen::MatrixXi F;
+  Eigen::MatrixXd N;
+  Eigen::MatrixXd UV;
+  igl::readPLY(str,V,F,N,UV);
+  return tututu(V,F,N,UV);
 }, __doc_igl_readPLY,
-py::arg("str"), py::arg("V"), py::arg("F"), py::arg("N"), py::arg("UV"));
+py::arg("str"));

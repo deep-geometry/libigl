@@ -7,23 +7,13 @@
 // obtain one at http://mozilla.org/MPL/2.0/.
 m.def("readOFF", []
 (
-  const std::string str,
-  Eigen::MatrixXd& V,
-  Eigen::MatrixXi& F
+  const std::string str
 )
 {
-  return igl::readOFF(str,V,F);
+  Eigen::MatrixXd V;
+  Eigen::MatrixXi F;
+  Eigen::MatrixXd N;
+  igl::readOFF(str,V,F,N);
+  return tututu(V,F,N);
 }, __doc_igl_readOFF,
-py::arg("str"), py::arg("V"), py::arg("F"));
-
-m.def("readOFF", []
-(
-  const std::string str,
-  Eigen::MatrixXd& V,
-  Eigen::MatrixXi& F,
-  Eigen::MatrixXd& N
-)
-{
-  return igl::readOFF(str,V,F,N);
-}, __doc_igl_readOFF,
-py::arg("str"), py::arg("V"), py::arg("F"), py::arg("N"));
+py::arg("str"));

@@ -43,26 +43,28 @@ m.def("arap_precomputation", []
   const Eigen::MatrixXd & V,
   const Eigen::MatrixXi & F,
   const int dim,
-  const Eigen::MatrixXi& b,
-  igl::ARAPData & data
+  const Eigen::MatrixXi& b
 )
 {
+  igl::ARAPData  data;
   assert_is_VectorX("b",b);
   Eigen::VectorXi bt;
   if (b.size() != 0)
     bt = b;
 
-  return igl::arap_precomputation(V,F,dim,bt,data);
+  igl::arap_precomputation(V,F,dim,bt,data);
+  return data;
 }, __doc_igl_arap_precomputation,
-py::arg("V"), py::arg("F"), py::arg("dim"), py::arg("b"), py::arg("data"));
+py::arg("V"), py::arg("F"), py::arg("dim"), py::arg("b"));
 
 m.def("arap_solve", []
 (
-  const Eigen::MatrixXd & bc,
-  igl::ARAPData & data,
-  Eigen::MatrixXd& U
+  const Eigen::MatrixXd & bc
 )
 {
-  return igl::arap_solve(bc,data,U);
+  igl::ARAPData  data;
+  Eigen::MatrixXd U;
+  igl::arap_solve(bc,data,U);
+  return tututu(data,U);
 }, __doc_igl_arap_solve,
-py::arg("bc"), py::arg("data"), py::arg("U"));
+py::arg("bc"));

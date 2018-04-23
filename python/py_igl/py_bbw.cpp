@@ -26,15 +26,16 @@ m.def("bbw", []
   const Eigen::MatrixXd& V,
   const Eigen::MatrixXi& Ele,
   const Eigen::MatrixXi& b,
-  const Eigen::MatrixXd& bc,
-  igl::BBWData& data,
-  Eigen::MatrixXd& W
+  const Eigen::MatrixXd& bc
 )
 {
+  igl::BBWData data;
+  Eigen::MatrixXd W;
   assert_is_VectorX("b",b);
   Eigen::VectorXi bv;
   if (b.size() != 0)
     bv = b;
-  return igl::bbw(V, Ele, bv, bc, data, W);
+  igl::bbw(V, Ele, bv, bc, data, W);
+  return tututu(data, W);
 }, __doc_igl_bbw,
-py::arg("V"), py::arg("Ele"), py::arg("b"), py::arg("bc"), py::arg("data"), py::arg("W"));
+py::arg("V"), py::arg("Ele"), py::arg("b"), py::arg("bc"));
