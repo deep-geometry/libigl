@@ -13,14 +13,15 @@ m.def("swept_volume", []
   const std::function<Eigen::Affine3d (const double)> & transform,
   const size_t steps,
   const size_t grid_res,
-  const size_t isolevel,
-  Eigen::MatrixXd& SV,
-  Eigen::MatrixXi& SF
+  const size_t isolevel
 )
 {
-  return igl::copyleft::swept_volume(V, F, transform, steps, grid_res, isolevel, SV, SF);
+  Eigen::MatrixXd SV;
+  Eigen::MatrixXi SF;
+  igl::copyleft::swept_volume(V, F, transform, steps, grid_res, isolevel, SV, SF);
+  return std::make_tuple(SV,SF);
 }, __doc_igl_copyleft_swept_volume,
-py::arg("V"), py::arg("F"), py::arg("transform"), py::arg("steps"), py::arg("grid_res"), py::arg("isolevel"), py::arg("SV"), py::arg("SF"));
+py::arg("V"), py::arg("F"), py::arg("transform"), py::arg("steps"), py::arg("grid_res"), py::arg("isolevel"));
 
 
 

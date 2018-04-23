@@ -15,6 +15,6 @@ m.def("readPLY", []
   Eigen::MatrixXd N;
   Eigen::MatrixXd UV;
   igl::readPLY(str,V,F,N,UV);
-  return tututu(V,F,N,UV);
+  return std::make_tuple(V,F,N,UV);
 }, __doc_igl_readPLY,
 py::arg("str"));

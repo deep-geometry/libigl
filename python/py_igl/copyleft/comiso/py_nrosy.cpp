@@ -15,11 +15,11 @@ m.def("nrosy", []
   const Eigen::MatrixXd& w_soft,
   const Eigen::MatrixXd& bc_soft,
   const int N,
-  const double soft,
-  Eigen::MatrixXd& R,
-  Eigen::MatrixXd& S
+  const double soft
 )
 {
+  Eigen::MatrixXd R;
+  Eigen::MatrixXd S;
   assert_is_VectorX("b",b);
   assert_is_VectorX("b_soft",b_soft);
   assert_is_VectorX("w_soft",w_soft);
@@ -39,9 +39,9 @@ m.def("nrosy", []
   Eigen::VectorXd St;
   igl::copyleft::comiso::nrosy(V,F,bt,bc,b_softt,w_softt,bc_soft,N,soft,R,St);
   S = St;
-
+  return std::make_tuple(R,S);
 }, __doc_igl_copyleft_comiso_nrosy,
-py::arg("V"), py::arg("F"), py::arg("b"), py::arg("bc"), py::arg("b_soft"), py::arg("w_soft"), py::arg("bc_soft"), py::arg("N"), py::arg("soft"), py::arg("R"), py::arg("S"));
+py::arg("V"), py::arg("F"), py::arg("b"), py::arg("bc"), py::arg("b_soft"), py::arg("w_soft"), py::arg("bc_soft"), py::arg("N"), py::arg("soft"));
 
 m.def("nrosy", []
 (
@@ -49,11 +49,11 @@ m.def("nrosy", []
   const Eigen::MatrixXi& F,
   const Eigen::MatrixXi& b,
   const Eigen::MatrixXd& bc,
-  const int N,
-  Eigen::MatrixXd& R,
-  Eigen::MatrixXd& S
+  const int N
 )
 {
+  Eigen::MatrixXd R;
+  Eigen::MatrixXd S;
   assert_is_VectorX("b",b);
 
   Eigen::VectorXi bt;
@@ -63,5 +63,6 @@ m.def("nrosy", []
   Eigen::VectorXd St;
   igl::copyleft::comiso::nrosy(V,F,bt,bc,N,R,St);
   S = St;
+  return std::make_tuple(R,S);
 }, __doc_igl_copyleft_comiso_nrosy,
-py::arg("V"), py::arg("F"), py::arg("b"), py::arg("bc"), py::arg("N"), py::arg("R"), py::arg("S"));
+py::arg("V"), py::arg("F"), py::arg("b"), py::arg("bc"), py::arg("N"));

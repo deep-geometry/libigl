@@ -10,15 +10,16 @@ m.def("tetrahedralize", []
 (
   const Eigen::MatrixXd& V,
   const Eigen::MatrixXi& F,
-  const std::string switches,
-  Eigen::MatrixXd& TV,
-  Eigen::MatrixXi& TT,
-  Eigen::MatrixXi& TF
+  const std::string switches
 )
 {
-  return igl::copyleft::tetgen::tetrahedralize(V, F, switches, TV, TT, TF);
+  Eigen::MatrixXd TV;
+  Eigen::MatrixXi TT;
+  Eigen::MatrixXi TF;
+  igl::copyleft::tetgen::tetrahedralize(V, F, switches, TV, TT, TF);
+  return std::make_tuple(TV,TT,TF);
 }, __doc_igl_copyleft_tetgen_tetrahedralize,
-py::arg("V"), py::arg("F"), py::arg("switches"), py::arg("TV"), py::arg("TT"), py::arg("TF"));
+py::arg("V"), py::arg("F"), py::arg("switches"));
 
 m.def("tetrahedralize", []
 (
@@ -26,14 +27,15 @@ m.def("tetrahedralize", []
   const Eigen::MatrixXi& F,
   const Eigen::MatrixXi& VM,
   const Eigen::MatrixXi& FM,
-  const std::string switches,
-  Eigen::MatrixXd& TV,
-  Eigen::MatrixXi& TT,
-  Eigen::MatrixXi& TF,
-  Eigen::MatrixXi& TM
+  const std::string switches
 )
 {
-  return igl::copyleft::tetgen::tetrahedralize(V, F, VM, FM, switches, TV, TT, TF, TM);
+  Eigen::MatrixXd TV;
+  Eigen::MatrixXi TT;
+  Eigen::MatrixXi TF;
+  Eigen::MatrixXi TM;
+  igl::copyleft::tetgen::tetrahedralize(V, F, VM, FM, switches, TV, TT, TF, TM);
+  return std::make_tuple(TV,TT,TF,TM);
 }, __doc_igl_copyleft_tetgen_tetrahedralize,
-py::arg("V"), py::arg("F"), py::arg("VM"), py::arg("FM"), py::arg("switches"), py::arg("TV"), py::arg("TT"), py::arg("TF"), py::arg("TM"));
+py::arg("V"), py::arg("F"), py::arg("VM"), py::arg("FM"), py::arg("switches"));
 

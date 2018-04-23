@@ -14,9 +14,7 @@ m.def("unproject_onto_mesh", []
   const Eigen::MatrixXd & proj,
   const Eigen::MatrixXd & viewport,
   const Eigen::MatrixXd& V,
-  const Eigen::MatrixXi& F,
-  Eigen::MatrixXi& fid, // TODO: Can we replace this with integer object reference?
-  Eigen::MatrixXd& bc
+  const Eigen::MatrixXi& F
 )
 {
   assert_is_Vector2("pos", pos);
@@ -39,11 +37,10 @@ m.def("unproject_onto_mesh", []
   Eigen::VectorXd bcv;
   int fidi;
   bool ret = igl::unproject_onto_mesh(posv, modelm, projm, viewportv, V, F, fidi, bcv);
-  fid(0, 0) = fidi;
   bc = bcv;
-  return ret;
+  return std::make_tuple(fidi,bc,ret);
 }, __doc_igl_unproject_onto_mesh,
-py::arg("pos"), py::arg("model"), py::arg("proj"), py::arg("viewport"), py::arg("V"), py::arg("F"), py::arg("fid"), py::arg("bc"));
+py::arg("pos"), py::arg("model"), py::arg("proj"), py::arg("viewport"), py::arg("V"), py::arg("F"));
 
 // INCOMPLETE BINDINGS ========================
 

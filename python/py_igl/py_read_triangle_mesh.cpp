@@ -13,6 +13,6 @@ m.def("read_triangle_mesh", []
   Eigen::MatrixXd V;
   Eigen::MatrixXi F;
   igl::read_triangle_mesh(str,V,F);
-  return tututu(V,F);
+  return std::make_tuple(V,F);
 }, __doc_igl_read_triangle_mesh,
 py::arg("str"));

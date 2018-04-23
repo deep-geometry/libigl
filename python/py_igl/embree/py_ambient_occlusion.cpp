@@ -13,11 +13,12 @@ m.def("ambient_occlusion", []
   const Eigen::MatrixXi& F,
   const Eigen::MatrixXd& P,
   const Eigen::MatrixXd& N,
-  const int num_samples,
-  Eigen::MatrixXd& S
+  const int num_samples
 )
 {
-  return igl::embree::ambient_occlusion(V, F, P, N, num_samples, S);
+  Eigen::MatrixXd S;
+  igl::embree::ambient_occlusion(V, F, P, N, num_samples, S);
+  return S;
 }, __doc_igl_embree_ambient_occlusion,
-py::arg("V"), py::arg("F"), py::arg("P"), py::arg("N"), py::arg("num_samples"), py::arg("S"));
+py::arg("V"), py::arg("F"), py::arg("P"), py::arg("N"), py::arg("num_samples"));
 

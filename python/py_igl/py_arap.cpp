@@ -65,6 +65,6 @@ m.def("arap_solve", []
   igl::ARAPData  data;
   Eigen::MatrixXd U;
   igl::arap_solve(bc,data,U);
-  return tututu(data,U);
+  return std::make_tuple(data,U);
 }, __doc_igl_arap_solve,
 py::arg("bc"));

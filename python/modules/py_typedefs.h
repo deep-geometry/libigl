@@ -18,6 +18,3 @@ PYBIND11_MAKE_OPAQUE(RotationList)
 //typedef std::vector<Eigen::Vector3d> TranslationList;
 //PYBIND11_MAKE_OPAQUE(TranslationList);
 
-PYBIND11_MAKE_OPAQUE(std::vector<int>)
-PYBIND11_MAKE_OPAQUE(std::vector<std::vector<int>>)
-

@@ -14,6 +14,6 @@ m.def("readOFF", []
   Eigen::MatrixXi F;
   Eigen::MatrixXd N;
   igl::readOFF(str,V,F,N);
-  return tututu(V,F,N);
+  return std::make_tuple(V,F,N);
 }, __doc_igl_readOFF,
 py::arg("str"));

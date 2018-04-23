@@ -14,7 +14,7 @@ m.def("readMESH", []
   Eigen::MatrixXi T;
   Eigen::MatrixXi F;
   igl::readMESH(mesh_file_name, V, T, F);
-  return tututu(V,T,F);
+  return std::make_tuple(V,T,F);
 }, __doc_igl_readMESH,
 py::arg("mesh_file_name"));
 

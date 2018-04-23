@@ -36,6 +36,6 @@ m.def("bbw", []
   if (b.size() != 0)
     bv = b;
   igl::bbw(V, Ele, bv, bc, data, W);
-  return tututu(data, W);
+  return std::make_tuple(data, W);
 }, __doc_igl_bbw,
 py::arg("V"), py::arg("Ele"), py::arg("b"), py::arg("bc"));

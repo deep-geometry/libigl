@@ -26,19 +26,14 @@ m.def("forward_kinematics", []
   const Eigen::MatrixXd& C,
   const Eigen::MatrixXi& BE,
   const Eigen::MatrixXi& P,
-  const RotationList& dQ,
-  RotationList& vQ,
-  py::list vT
+  const RotationList& dQ
 )
 {
   std::vector<Eigen::Vector3d> vTl;
   igl::forward_kinematics(C, BE, P, dQ, vQ, vTl);
-  for (auto item : vTl) {
-    py::object obj = py::cast(Eigen::MatrixXd(item));
-    vT.append(obj);
-  }
+  return std::make_tuple(vQ, vTl)
 }, __doc_igl_forward_kinematics,
-py::arg("C"), py::arg("BE"), py::arg("P"), py::arg("dQ"), py::arg("vQ"), py::arg("vT"));
+py::arg("C"), py::arg("BE"), py::arg("P"), py::arg("dQ"));
 
 //m.def("forward_kinematics", []
 //(

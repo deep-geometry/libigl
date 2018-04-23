@@ -8,7 +8,8 @@
 #include <Eigen/Geometry>
 #include <Eigen/Dense>
 #include <Eigen/Sparse>
-
+#include <pybind11/eigen.h>
+#include <pybind11/stl.h>
 
 #include "../python_shared.h"
 
@@ -631,12 +632,10 @@ void python_export_vector(py::module &m) {
     // py::implicitly_convertible<double, Eigen::VectorXi>();
 
     /* Bindings for MatrixXd */
-    bind_eigen_2<Eigen::MatrixXd> (me, "MatrixXd");
     //py::implicitly_convertible<py::buffer, Eigen::MatrixXd>();
     //py::implicitly_convertible<double, Eigen::MatrixXd>();
 
     /* Bindings for MatrixXi */
-    bind_eigen_2<Eigen::MatrixXi> (me, "MatrixXi");
     //py::implicitly_convertible<py::buffer, Eigen::MatrixXi>();
     //py::implicitly_convertible<double, Eigen::MatrixXi>();
 

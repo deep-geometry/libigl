@@ -22,7 +22,7 @@ m.def("readTGF", []
   Eigen::VectorXi Pv;
   bool ret = igl::readTGF(tgf_filename, C, E, Pv, BE, CE, PE);
   P = Pv;
-  return tututu(C,E,P,BE,CE,PE,ret);
+  return std::make_tuple(C,E,P,BE,CE,PE,ret);
 }, __doc_igl_readTGF,
 py::arg("tgf_filename"));
 

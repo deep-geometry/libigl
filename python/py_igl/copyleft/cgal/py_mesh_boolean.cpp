@@ -13,15 +13,16 @@ m.def("mesh_boolean", []
   const Eigen::MatrixXi& FA,
   const Eigen::MatrixXd& VB,
   const Eigen::MatrixXi& FB,
-  igl::MeshBooleanType & type,
-  Eigen::MatrixXd& VC,
-  Eigen::MatrixXi& FC,
-  Eigen::MatrixXi& J
+  igl::MeshBooleanType & type
 )
 {
-  return igl::copyleft::cgal::mesh_boolean(VA, FA, VB, FB, type, VC, FC, J);
+  Eigen::MatrixXd VC;
+  Eigen::MatrixXi FC;
+  Eigen::MatrixXi J;
+  igl::copyleft::cgal::mesh_boolean(VA, FA, VB, FB, type, VC, FC, J);
+  return std::make_tuple(VC,FC,J);
 }, __doc_igl_copyleft_cgal_mesh_boolean,
-py::arg("VA"), py::arg("FA"), py::arg("VB"), py::arg("FB"), py::arg("type"), py::arg("VC"), py::arg("FC"), py::arg("J"));
+py::arg("VA"), py::arg("FA"), py::arg("VB"), py::arg("FB"), py::arg("type"));
 
 
 m.def("mesh_boolean", []
@@ -30,15 +31,16 @@ m.def("mesh_boolean", []
   const Eigen::MatrixXi& FA,
   const Eigen::MatrixXd& VB,
   const Eigen::MatrixXi& FB,
-  const std::string & type_str,
-  Eigen::MatrixXd& VC,
-  Eigen::MatrixXi& FC,
-  Eigen::MatrixXi& J
+  const std::string & type_str
 )
 {
-  return igl::copyleft::cgal::mesh_boolean(VA, FA, VB, FB, type_str, VC, FC, J);
+  Eigen::MatrixXd VC;
+  Eigen::MatrixXi FC;
+  Eigen::MatrixXi J;
+  igl::copyleft::cgal::mesh_boolean(VA, FA, VB, FB, type_str, VC, FC, J);
+  return std::make_tuple(VC,FC,J);
 }, __doc_igl_copyleft_cgal_mesh_boolean,
-py::arg("VA"), py::arg("FA"), py::arg("VB"), py::arg("FB"), py::arg("type_str"), py::arg("VC"), py::arg("FC"), py::arg("J"));
+py::arg("VA"), py::arg("FA"), py::arg("VB"), py::arg("FB"), py::arg("type_str"));
 
 m.def("mesh_boolean", []
 (
@@ -46,14 +48,15 @@ m.def("mesh_boolean", []
   const Eigen::MatrixXi& FA,
   const Eigen::MatrixXd& VB,
   const Eigen::MatrixXi& FB,
-  const igl::MeshBooleanType & type,
-  Eigen::MatrixXd& VC,
-  Eigen::MatrixXi& FC
+  const igl::MeshBooleanType & type
 )
 {
-  return igl::copyleft::cgal::mesh_boolean(VA, FA, VB, FB, type, VC, FC);
+  Eigen::MatrixXd VC;
+  Eigen::MatrixXi FC;
+  igl::copyleft::cgal::mesh_boolean(VA, FA, VB, FB, type, VC, FC);
+  return std::make_tuple(VC,FC);
 }, __doc_igl_copyleft_cgal_mesh_boolean,
-py::arg("VA"), py::arg("FA"), py::arg("VB"), py::arg("FB"), py::arg("type"), py::arg("VC"), py::arg("FC"));
+py::arg("VA"), py::arg("FA"), py::arg("VB"), py::arg("FB"), py::arg("type"));
 
 
 
