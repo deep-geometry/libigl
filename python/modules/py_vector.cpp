@@ -621,66 +621,14 @@ void python_export_vector(py::module &m) {
   py::module me = m.def_submodule(
     "eigen", "Wrappers for Eigen types");
 
-    /* Bindings for VectorXd */
-    // bind_eigen_1<Eigen::VectorXd> (me, "VectorXd");
-    // py::implicitly_convertible<py::buffer, Eigen::VectorXd>();
-    // py::implicitly_convertible<double, Eigen::VectorXd>();
+    // bind_eigen_sparse_2< Eigen::SparseMatrix<double> > (me, "SparseMatrixd");
 
-    /* Bindings for VectorXi */
-    // bind_eigen_1<Eigen::VectorXi> (me, "VectorXi");
-    // py::implicitly_convertible<py::buffer, Eigen::VectorXi>();
-    // py::implicitly_convertible<double, Eigen::VectorXi>();
+    // bind_eigen_sparse_2< Eigen::SparseMatrix<int> > (me, "SparseMatrixi");
 
-    /* Bindings for MatrixXd */
-    // bind_eigen_2<Eigen::MatrixXd>(me, "MatrixXd");
-    //py::implicitly_convertible<py::buffer, Eigen::MatrixXd>();
-    //py::implicitly_convertible<double, Eigen::MatrixXd>();
-
-    /* Bindings for MatrixXi */
-    // bind_eigen_2<Eigen::MatrixXi>(me, "MatrixXi");
-    //py::implicitly_convertible<py::buffer, Eigen::MatrixXi>();
-    //py::implicitly_convertible<double, Eigen::MatrixXi>();
-
-    /* Bindings for MatrixXb */
-    // bind_eigen_2<Eigen::Matrix<bool,Eigen::Dynamic,Eigen::Dynamic> > (me, "MatrixXb");
-
-    /* Bindings for MatrixXuc */
-    bind_eigen_2<Eigen::Matrix<unsigned char,Eigen::Dynamic,Eigen::Dynamic> > (me, "MatrixXuc");
-    // py::implicitly_convertible<py::buffer, Eigen::Matrix<unsigned char,Eigen::Dynamic,Eigen::Dynamic> >();
-    // py::implicitly_convertible<double, Eigen::Matrix<unsigned char,Eigen::Dynamic,Eigen::Dynamic> >();
-
-    // /* Bindings for Vector3d */
-    // auto vector3 = bind_eigen_1_3<Eigen::Vector3d>(me, "Vector3d");
-    // vector3
-    //     .def("norm", [](const Eigen::Vector3d &v) { return v.norm(); })
-    //     .def("squaredNorm", [](const Eigen::Vector3d &v) { return v.squaredNorm(); })
-    //     .def("normalize", [](Eigen::Vector3d &v) { v.normalize(); })
-    //     .def("normalized", [](const Eigen::Vector3d &v) -> Eigen::Vector3d { return v.normalized(); })
-    //     .def("dot", [](const Eigen::Vector3d &v1, const Eigen::Vector3d &v2) { return v1.dot(v2); })
-    //     .def("cross", [](const Eigen::Vector3d &v1, const Eigen::Vector3d &v2) -> Eigen::Vector3d { return v1.cross(v2); })
-    //     .def_property("x", [](const Eigen::Vector3d &v) -> double { return v.x(); },
-    //                        [](Eigen::Vector3d &v, double x) { v.x() = x; }, "X coordinate")
-    //     .def_property("y", [](const Eigen::Vector3d &v) -> double { return v.y(); },
-    //                        [](Eigen::Vector3d &v, double y) { v.y() = y; }, "Y coordinate")
-    //     .def_property("z", [](const Eigen::Vector3d &v) -> double { return v.z(); },
-    //                        [](Eigen::Vector3d &v, double z) { v.z() = z; }, "Z coordinate");
-    //
-    // py::implicitly_convertible<py::buffer, Eigen::Vector3d>();
-    // py::implicitly_convertible<double, Eigen::Vector3d>();
-
-    /* Bindings for SparseMatrix<double> */
-    bind_eigen_sparse_2< Eigen::SparseMatrix<double> > (me, "SparseMatrixd");
-
-    /* Bindings for SparseMatrix<int> */
-    bind_eigen_sparse_2< Eigen::SparseMatrix<int> > (me, "SparseMatrixi");
-
-    /* Bindings for DiagonalMatrix<double> */
     bind_eigen_diagonal_2< Eigen::DiagonalMatrix<double,Eigen::Dynamic,Eigen::Dynamic> > (me, "DiagonalMatrixd");
 
-    /* Bindings for DiagonalMatrix<int> */
     bind_eigen_diagonal_2< Eigen::DiagonalMatrix<int,Eigen::Dynamic,Eigen::Dynamic> > (me, "DiagonalMatrixi");
 
-    /* Bindings for SimplicialLLT*/
     py::class_<Eigen::SimplicialLLT<Eigen::SparseMatrix<double > >> simpliciallltsparse(me, "SimplicialLLTsparse");
 
     simpliciallltsparse
@@ -747,23 +695,9 @@ void python_export_vector(py::module &m) {
     .def("slerp",[](Eigen::Quaterniond& q, double & t, Eigen::Quaterniond other) {
         return q.slerp(t, other);
     })
-//    .def_cast(-py::self)
-//    .def_cast(py::self + py::self)
-//    .def_cast(py::self - py::self)
-    .def_cast(py::self * py::self)
-    // .def_cast(py::self - Scalar())
-    // .def_cast(py::self * Scalar())
-    // .def_cast(py::self / Scalar())
 
-//    .def("__mul__", []
-//    (const Type &a, const Scalar& b)
-//    {
-//      return Eigen::Matrix<Scalar,Eigen::Dynamic,Eigen::Dynamic>(a * b);
-//    })
-//    .def("__rmul__", [](const Type& a, const Scalar& b)
-//    {
-//      return Eigen::Matrix<Scalar,Eigen::Dynamic,Eigen::Dynamic>(b * a);
-//    })
+    .def_cast(py::self * py::self)
+
     ;
 
     
