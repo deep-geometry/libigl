@@ -17,47 +17,50 @@ m.def("min_quad_with_fixed_precompute", []
   const Eigen::SparseMatrix<double>& A,
   const Eigen::MatrixXi& known,
   const Eigen::SparseMatrix<double>& Aeq,
-  const bool pd,
-  igl::min_quad_with_fixed_data<double> & data
+  const bool pd
 )
 {
+  igl::min_quad_with_fixed_data<double>  data;
   assert_is_VectorX("known",known);
-  return igl::min_quad_with_fixed_precompute(A,known,Aeq,pd,data);
+  igl::min_quad_with_fixed_precompute(A,known,Aeq,pd,data);
+  return data;
 }, __doc_igl_min_quad_with_fixed,
-py::arg("A"), py::arg("known"), py::arg("Aeq"), py::arg("pd"), py::arg("data"));
+py::arg("A"), py::arg("known"), py::arg("Aeq"), py::arg("pd"));
 
 m.def("min_quad_with_fixed_solve", []
 (
   const igl::min_quad_with_fixed_data<double> & data,
   const Eigen::MatrixXd& B,
   const Eigen::MatrixXd& Y,
-  const Eigen::MatrixXd & Beq,
-  Eigen::MatrixXd& Z,
-  Eigen::MatrixXd& sol
+  const Eigen::MatrixXd & Beq
 )
 {
+  Eigen::MatrixXd Z;
+  Eigen::MatrixXd sol;
   assert_is_VectorX("B",B);
   assert_is_VectorX("Y",Y);
   assert_is_VectorX("Beq",Beq);
-  return igl::min_quad_with_fixed_solve(data,B,Y,Beq,Z,sol);
+  igl::min_quad_with_fixed_solve(data,B,Y,Beq,Z,sol);
+  return tututu(Z, sol);
 }, __doc_igl_min_quad_with_fixed,
-py::arg("data"), py::arg("B"), py::arg("Y"), py::arg("Beq"), py::arg("Z"), py::arg("sol"));
+py::arg("data"), py::arg("B"), py::arg("Y"), py::arg("Beq"));
 
 m.def("min_quad_with_fixed_solve", []
 (
   const igl::min_quad_with_fixed_data<double> & data,
   const Eigen::MatrixXd& B,
   const Eigen::MatrixXd& Y,
-  const Eigen::MatrixXd & Beq,
-  Eigen::MatrixXd& Z
+  const Eigen::MatrixXd & Beq
 )
 {
+  Eigen::MatrixXd Z;
   assert_is_VectorX("B",B);
   assert_is_VectorX("Y",Y);
   assert_is_VectorX("Beq",Beq);
-  return igl::min_quad_with_fixed_solve(data,B,Y,Beq,Z);
+  igl::min_quad_with_fixed_solve(data,B,Y,Beq,Z);
+  return Z;
 }, __doc_igl_min_quad_with_fixed,
-py::arg("data"), py::arg("B"), py::arg("Y"), py::arg("Beq"), py::arg("Z"));
+py::arg("data"), py::arg("B"), py::arg("Y"), py::arg("Beq"));
 
 m.def("min_quad_with_fixed", []
 (

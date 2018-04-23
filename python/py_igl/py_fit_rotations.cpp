@@ -8,22 +8,24 @@
 m.def("fit_rotations", []
 (
   const Eigen::MatrixXd& S,
-  const bool single_precision,
-  Eigen::MatrixXd& R
+  const bool single_precision
 )
 {
-  return igl::fit_rotations(S, single_precision, R);
+  Eigen::MatrixXd R;
+  igl::fit_rotations(S, single_precision, R);
+  return R;
 }, __doc_igl_fit_rotations,
-py::arg("S"), py::arg("single_precision"), py::arg("R"));
+py::arg("S"), py::arg("single_precision"));
 
 
 m.def("fit_rotations_planar", []
 (
-  const Eigen::MatrixXd& S,
-  Eigen::MatrixXd& R
+  const Eigen::MatrixXd& S
 )
 {
-  return igl::fit_rotations_planar(S, R);
+  Eigen::MatrixXd R;
+  igl::fit_rotations_planar(S, R);
+  return R;
 }, __doc_igl_fit_rotations_planar,
-py::arg("S"), py::arg("R"));
+py::arg("S"));
 

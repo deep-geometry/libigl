@@ -8,10 +8,11 @@
 m.def("barycenter", []
 (
   const Eigen::MatrixXd& V,
-  const Eigen::MatrixXi& F,
-  Eigen::MatrixXd& BC
+  const Eigen::MatrixXi& F
 )
 {
-  return igl::barycenter(V,F,BC);
+  Eigen::MatrixXd BC;
+  igl::barycenter(V,F,BC);
+  return BC;
 }, __doc_igl_barycenter,
-py::arg("V"), py::arg("F"), py::arg("BC"));
+py::arg("V"), py::arg("F");

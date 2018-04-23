@@ -13,5 +13,3 @@ py::enum_<igl::MeshBooleanType>(m, "MeshBooleanType")
     .value("MESH_BOOLEAN_TYPE_RESOLVE", igl::MESH_BOOLEAN_TYPE_RESOLVE)
     .value("NUM_MESH_BOOLEAN_TYPES", igl::NUM_MESH_BOOLEAN_TYPES)
     .export_values();
-
-

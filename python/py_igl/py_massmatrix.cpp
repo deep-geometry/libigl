@@ -17,10 +17,11 @@ m.def("massmatrix", []
 (
   const Eigen::MatrixXd& V,
   const Eigen::MatrixXi& F,
-  const igl::MassMatrixType type,
-  Eigen::SparseMatrix<double>& M
+  const igl::MassMatrixType type
 )
 {
-  return igl::massmatrix(V,F,type,M);
+  Eigen::SparseMatrix<double> M;
+  igl::massmatrix(V,F,type,M);
+  return M;
 }, __doc_igl_massmatrix,
-py::arg("V"), py::arg("F"), py::arg("type"), py::arg("M"));
+py::arg("V"), py::arg("F"), py::arg("type"));

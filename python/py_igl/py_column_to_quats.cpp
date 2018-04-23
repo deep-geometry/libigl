@@ -7,11 +7,12 @@
 // obtain one at http://mozilla.org/MPL/2.0/.
 m.def("column_to_quats", []
 (
-  const Eigen::MatrixXd& Q,
-  RotationList& vQ
+  const Eigen::MatrixXd& Q
 )
 {
-  return igl::column_to_quats(Q, vQ);
+  RotationList vQ;
+   igl::column_to_quats(Q, vQ);
+  return vQ;
 }, __doc_igl_column_to_quats,
-py::arg("Q"), py::arg("vQ"));
+py::arg("Q"));
 

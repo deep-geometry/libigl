@@ -14,11 +14,12 @@ m.def("exact_geodesic", []
     const Eigen::MatrixXi &VS,
     const Eigen::MatrixXi &FS,
     const Eigen::MatrixXi &VT,
-    const Eigen::MatrixXi &FT,
-    Eigen::MatrixXd &D
+    const Eigen::MatrixXi &FT
 )
 {
-  return igl::exact_geodesic(V, F, VS,FS,VT,FT, D);
+    Eigen::MatrixXd D;
+  igl::exact_geodesic(V, F, VS,FS,VT,FT, D);
+  return D;
 }, __doc_igl_exact_geodesic,
-py::arg("V"), py::arg("F"), py::arg("VS"), py::arg("FS"), py::arg("VT"), py::arg("FT"), py::arg("D"));
+py::arg("V"), py::arg("F"), py::arg("VS"), py::arg("FS"), py::arg("VT"), py::arg("FT"));
 

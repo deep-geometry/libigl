@@ -7,10 +7,11 @@
 // obtain one at http://mozilla.org/MPL/2.0/.
 m.def("invert_diag", []
 (
-  const Eigen::SparseMatrix<double>& X,
-  Eigen::SparseMatrix<double>& Y
+  const Eigen::SparseMatrix<double>& X
 )
 {
-  return igl::invert_diag(X,Y);
+  Eigen::SparseMatrix<double> Y;
+  igl::invert_diag(X,Y);
+  return Y;
 }, __doc_igl_invert_diag,
-py::arg("X"), py::arg("Y"));
+py::arg("X"));

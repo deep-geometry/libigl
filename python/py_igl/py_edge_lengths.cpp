@@ -8,11 +8,12 @@
 m.def("edge_lengths", []
 (
   const Eigen::MatrixXd& V,
-  const Eigen::MatrixXi& F,
-  Eigen::MatrixXd& L
+  const Eigen::MatrixXi& F
 )
 {
-  return igl::edge_lengths(V, F, L);
+  Eigen::MatrixXd L;
+  igl::edge_lengths(V, F, L);
+  return L;
 }, __doc_igl_edge_lengths,
-py::arg("V"), py::arg("F"), py::arg("L"));
+py::arg("V"), py::arg("F"));
 

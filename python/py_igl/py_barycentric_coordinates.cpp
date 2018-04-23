@@ -13,24 +13,26 @@ m.def("barycentric_coordinates", []
   const Eigen::MatrixXd& A,
   const Eigen::MatrixXd& B,
   const Eigen::MatrixXd& C,
-  const Eigen::MatrixXd& D,
-  Eigen::MatrixXd& L
+  const Eigen::MatrixXd& D
 )
 {
-  return igl::barycentric_coordinates(P, A, B, C, D, L);
+  Eigen::MatrixXd& L
+  igl::barycentric_coordinates(P, A, B, C, D, L);
+  return L;
 }, __doc_igl_barycentric_coordinates,
-py::arg("P"), py::arg("A"), py::arg("B"), py::arg("C"), py::arg("D"), py::arg("L"));
+py::arg("P"), py::arg("A"), py::arg("B"), py::arg("C"), py::arg("D"));
 
 m.def("barycentric_coordinates", []
 (
   const Eigen::MatrixXd& P,
   const Eigen::MatrixXd& A,
   const Eigen::MatrixXd& B,
-  const Eigen::MatrixXd& C,
-  Eigen::MatrixXd& L
+  const Eigen::MatrixXd& C
 )
 {
-  return igl::barycentric_coordinates(P, A, B, C, L);
+  Eigen::MatrixXd& L
+  igl::barycentric_coordinates(P, A, B, C, L);
+  return L;
 }, __doc_igl_barycentric_coordinates,
-py::arg("P"), py::arg("A"), py::arg("B"), py::arg("C"), py::arg("L"));
+py::arg("P"), py::arg("A"), py::arg("B"), py::arg("C"));
 

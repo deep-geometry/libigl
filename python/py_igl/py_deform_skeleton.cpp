@@ -12,14 +12,15 @@ m.def("deform_skeleton", []
 (
   const Eigen::MatrixXd& C,
   const Eigen::MatrixXi& BE,
-  const Eigen::MatrixXd& T,
-  Eigen::MatrixXd& CT,
-  Eigen::MatrixXi& BET
+  const Eigen::MatrixXd& T
 )
 {
-  return igl::deform_skeleton(C, BE, T, CT, BET);
+  Eigen::MatrixXd CT;
+  Eigen::MatrixXi BET;
+  igl::deform_skeleton(C, BE, T, CT, BET);
+  return std::make_tuple(CT, BET);
 }, __doc_igl_deform_skeleton,
-py::arg("C"), py::arg("BE"), py::arg("T"), py::arg("CT"), py::arg("BET"));
+py::arg("C"), py::arg("BE"), py::arg("T"));
 
 
 

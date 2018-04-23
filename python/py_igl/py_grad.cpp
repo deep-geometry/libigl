@@ -8,10 +8,11 @@
 m.def("grad", []
 (
   const Eigen::MatrixXd& V,
-  const Eigen::MatrixXi& F,
-  Eigen::SparseMatrix<double>& G
+  const Eigen::MatrixXi& F
 )
 {
-  return igl::grad(V,F,G);
+  Eigen::SparseMatrix<double> G;
+  igl::grad(V,F,G);
+  return G;
 }, __doc_igl_grad,
-py::arg("V"), py::arg("F"), py::arg("G"));
+py::arg("V"), py::arg("F"));

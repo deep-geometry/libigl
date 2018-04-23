@@ -8,10 +8,11 @@
 m.def("cotmatrix", []
 (
   const Eigen::MatrixXd& V,
-  const Eigen::MatrixXi& F,
-  Eigen::SparseMatrix<double>& L
+  const Eigen::MatrixXi& F
 )
 {
-  return igl::cotmatrix(V,F,L);
+  Eigen::SparseMatrix<double> L;
+  igl::cotmatrix(V,F,L);
+  return L;
 }, __doc_igl_cotmatrix,
-py::arg("V"), py::arg("F"), py::arg("L"));
+py::arg("V"), py::arg("F"));

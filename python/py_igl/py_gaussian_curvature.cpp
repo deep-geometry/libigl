@@ -8,10 +8,11 @@
 m.def("gaussian_curvature", []
 (
   const Eigen::MatrixXd& V,
-  const Eigen::MatrixXi& F,
-  Eigen::MatrixXd& K
+  const Eigen::MatrixXi& F
 )
 {
-  return igl::gaussian_curvature(V,F,K);
+  Eigen::MatrixXd K;
+  igl::gaussian_curvature(V,F,K);
+  return K;
 }, __doc_igl_gaussian_curvature,
-py::arg("V"), py::arg("F"), py::arg("K"));
+py::arg("V"), py::arg("F"));

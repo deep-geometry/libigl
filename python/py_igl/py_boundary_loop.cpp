@@ -7,34 +7,37 @@
 // obtain one at http://mozilla.org/MPL/2.0/.
 m.def("boundary_loop", []
 (
-  const Eigen::MatrixXi& F,
-  Eigen::MatrixXi& L
+  const Eigen::MatrixXi& F
 )
 {
+  Eigen::MatrixXi L;
   Eigen::VectorXi T;
   igl::boundary_loop(F,T);
   L = T;
+  return L;
 }, __doc_igl_boundary_loop,
-py::arg("F"), py::arg("L"));
+py::arg("F"));
 
 m.def("boundary_loop", []
 (
-  const Eigen::MatrixXi& F,
-  std::vector<std::vector<int> >& L
+  const Eigen::MatrixXi& F
 )
 {
-  return igl::boundary_loop(F,L);
+  std::vector<std::vector<int> > L;
+  igl::boundary_loop(F,L);
+  return L;
 }, __doc_igl_boundary_loop,
-py::arg("F"), py::arg("L"));
+py::arg("F"));
 
 m.def("boundary_loop", []
 (
-  const Eigen::MatrixXi& F,
-  std::vector<int>& L
+  const Eigen::MatrixXi& F
 )
 {
-  return igl::boundary_loop(F,L);
+  std::vector<int> L;
+  igl::boundary_loop(F,L);
+  return L;
 }, __doc_igl_boundary_loop,
-py::arg("F"), py::arg("L"));
+py::arg("F"));
 
 

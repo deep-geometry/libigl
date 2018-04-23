@@ -8,11 +8,12 @@
 m.def("map_vertices_to_circle", []
 (
   const Eigen::MatrixXd& V,
-  const Eigen::MatrixXi& bnd,
-  Eigen::MatrixXd& UV
+  const Eigen::MatrixXi& bnd
 )
 {
+  Eigen::MatrixXd UV;
   assert_is_VectorX("bnd",bnd);
-  return igl::map_vertices_to_circle(V,bnd,UV);
+  igl::map_vertices_to_circle(V,bnd,UV);
+  return UV;
 }, __doc_igl_map_vertices_to_circle,
-py::arg("V"), py::arg("bnd"), py::arg("UV"));
+py::arg("V"), py::arg("bnd"));

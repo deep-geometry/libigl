@@ -9,55 +9,38 @@ m.def("cat", []
 (
   const int dim,
   const Eigen::MatrixXd& A,
-  const Eigen::MatrixXd& B,
-  Eigen::MatrixXd& C
+  const Eigen::MatrixXd& B
 )
 {
-  return igl::cat(dim, A, B, C);
-}, __doc_igl_cat,
-py::arg("dim"), py::arg("A"), py::arg("B"), py::arg("C"));
-
-m.def("cat", []
-(
-  const int dim,
-  Eigen::MatrixXd& A,
-  Eigen::MatrixXd& B
-)
-{
-  return igl::cat(dim, A, B);
+  Eigen::MatrixXd C;
+  igl::cat(dim, A, B, C);
+  return C;
 }, __doc_igl_cat,
 py::arg("dim"), py::arg("A"), py::arg("B"));
 
 m.def("cat", []
 (
   const int dim,
-  Eigen::MatrixXi& A,
-  Eigen::MatrixXi& B
+  const Eigen::MatrixXi& A,
+  const Eigen::MatrixXi& B
 )
 {
-  return igl::cat(dim, A, B);
+  Eigen::MatrixXi C;
+  igl::cat(dim, A, B, C);
+  return C;
 }, __doc_igl_cat,
 py::arg("dim"), py::arg("A"), py::arg("B"));
-
-//m.def("cat", []
-//(
-//  const std::vector<std::vector<Eigen::MatrixXd > > & A, 
-//  Eigen::MatrixXd & C
-//)
-//{
-//  return igl::cat(A, C);
-//}, __doc_igl_cat,
-//py::arg("A"), py::arg("C"));
 
 m.def("cat", []
 (
   const int dim,
   const Eigen::SparseMatrix<double>& A,
-  const Eigen::SparseMatrix<double>& B,
-  Eigen::SparseMatrix<double>& C
+  const Eigen::SparseMatrix<double>& B
 )
 {
-  return igl::cat(dim, A, B, C);
+  Eigen::SparseMatrix<double> C;
+  igl::cat(dim, A, B, C);
+  return C;
 }, __doc_igl_cat,
-py::arg("dim"), py::arg("A"), py::arg("B"), py::arg("C"));
+py::arg("dim"), py::arg("A"), py::arg("B"));
 

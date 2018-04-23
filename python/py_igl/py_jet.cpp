@@ -8,24 +8,26 @@
 m.def("jet", []
 (
   const Eigen::MatrixXd& Z,
-  const bool normalize,
-  Eigen::MatrixXd& C
+  const bool normalize
 )
 {
+  Eigen::MatrixXd C;
   assert_is_VectorX("Z",Z);
-  return igl::jet(Z,normalize,C);
+  igl::jet(Z,normalize,C);
+  return C;
 }, __doc_igl_jet,
-py::arg("Z"), py::arg("normalize"), py::arg("C"));
+py::arg("Z"), py::arg("normalize"));
 
 m.def("jet", []
 (
   const Eigen::MatrixXd& Z,
   const double min_Z,
-  const double max_Z,
-  Eigen::MatrixXd& C
+  const double max_Z
 )
 {
+  Eigen::MatrixXd C;
   assert_is_VectorX("Z",Z);
-  return igl::jet(Z,min_Z,max_Z,C);
+  igl::jet(Z,min_Z,max_Z,C);
+  return C;
 }, __doc_igl_jet,
-py::arg("Z"), py::arg("min_Z"), py::arg("max_Z"), py::arg("C"));
+py::arg("Z"), py::arg("min_Z"), py::arg("max_Z"));

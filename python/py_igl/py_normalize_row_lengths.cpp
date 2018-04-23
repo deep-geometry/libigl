@@ -9,11 +9,12 @@
 
 m.def("normalize_row_lengths", []
 (
-  const Eigen::MatrixXd& A,
-  Eigen::MatrixXd& B
+  const Eigen::MatrixXd& A
 )
 {
-  return igl::normalize_row_lengths(A, B);
+  Eigen::MatrixXd B;
+  igl::normalize_row_lengths(A, B);
+  return B;
 }, __doc_igl_normalize_row_lengths,
-py::arg("A"), py::arg("B"));
+py::arg("A"));
 

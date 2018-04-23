@@ -10,23 +10,25 @@
 m.def("internal_angles", []
 (
   const Eigen::MatrixXd& V,
-  const Eigen::MatrixXi& F,
-  Eigen::MatrixXd& K
+  const Eigen::MatrixXi& F
 )
 {
-  return igl::internal_angles(V, F, K);
+  Eigen::MatrixXd K;
+  igl::internal_angles(V, F, K);
+  return K;
 }, __doc_igl_internal_angles,
-py::arg("V"), py::arg("F"), py::arg("K"));
+py::arg("V"), py::arg("F"));
 
 m.def("internal_angles_using_squared_edge_lengths", []
 (
-  const Eigen::MatrixXd& L_sq,
-  Eigen::MatrixXd& K
+  const Eigen::MatrixXd& L_sq
 )
 {
-  return igl::internal_angles_using_squared_edge_lengths(L_sq, K);
+  Eigen::MatrixXd K;
+  igl::internal_angles_using_squared_edge_lengths(L_sq, K);
+  return K;
 }, __doc_igl_internal_angles,
-py::arg("L_sq"), py::arg("K"));
+py::arg("L_sq"));
 
 //m.def("internal_angles_using_edge_lengths", []
 //(

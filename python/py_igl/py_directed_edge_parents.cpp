@@ -9,13 +9,12 @@
 
 m.def("directed_edge_parents", []
 (
-  const Eigen::MatrixXi& E,
-  Eigen::MatrixXi& P
+  const Eigen::MatrixXi& E
 )
 {
   Eigen::VectorXi Pv;
   igl::directed_edge_parents(E, Pv);
-  P = Pv;
+  return Pv;
 }, __doc_igl_directed_edge_parents,
-py::arg("E"), py::arg("P"));
+py::arg("E"));
 

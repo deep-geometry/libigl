@@ -10,13 +10,14 @@
 
 m.def("hsv_to_rgb", []
 (
-  const Eigen::MatrixXd& H,
-  Eigen::MatrixXd& R
+  const Eigen::MatrixXd& H
 )
 {
-  return igl::hsv_to_rgb(H, R);
+  Eigen::MatrixXd R;
+  igl::hsv_to_rgb(H, R);
+  return R;
 }, __doc_igl_hsv_to_rgb,
-py::arg("H"), py::arg("R"));
+py::arg("H"));
 
 
 

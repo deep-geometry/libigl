@@ -7,10 +7,11 @@
 // obtain one at http://mozilla.org/MPL/2.0/.
 m.def("floor", []
 (
-  const Eigen::MatrixXd& X,
-  Eigen::MatrixXi& Y
+  const Eigen::MatrixXd& X
 )
 {
-  return igl::floor(X,Y);
+  Eigen::MatrixXi Y;
+  igl::floor(X,Y);
+  return Y;
 }, __doc_igl_floor,
-py::arg("X"), py::arg("Y"));
+py::arg("X"));
