@@ -32,7 +32,7 @@ m.def("signed_distance", []
   igl::signed_distance(P, V, F, sign_type, Sv, Iv, C, N);
   S = Sv;
   I = Iv;
-  return std::make_tuple(S,I,C, N)
+  return std::make_tuple(S,I,C, N);
 }, __doc_igl_signed_distance,
 py::arg("P"), py::arg("V"), py::arg("F"), py::arg("sign_type"));
 
@@ -79,7 +79,7 @@ m.def("signed_distance_pseudonormal", []
   igl::signed_distance_pseudonormal(P, V, F, tree, FN, VN, EN, EMAPv, Sv, Iv, C, N);
   S = Sv;
   I = Iv;
-  return std::make_tuple(S,I,C, N)
+  return std::make_tuple(S,I,C, N);
 }, __doc_igl_signed_distance_pseudonormal,
 py::arg("P"), py::arg("V"), py::arg("F"), py::arg("tree"), py::arg("FN"), py::arg("VN"), py::arg("EN"), py::arg("EMAP"));
 

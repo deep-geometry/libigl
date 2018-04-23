@@ -37,7 +37,7 @@ m.def("unproject_onto_mesh", []
   Eigen::VectorXd bcv;
   int fidi;
   bool ret = igl::unproject_onto_mesh(posv, modelm, projm, viewportv, V, F, fidi, bcv);
-  bc = bcv;
+  Eigen::MatrixXd bc = bcv;
   return std::make_tuple(fidi,bc,ret);
 }, __doc_igl_unproject_onto_mesh,
 py::arg("pos"), py::arg("model"), py::arg("proj"), py::arg("viewport"), py::arg("V"), py::arg("F"));

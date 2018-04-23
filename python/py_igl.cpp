@@ -6,7 +6,8 @@
 // v. 2.0. If a copy of the MPL was not distributed with this file, You can
 // obtain one at http://mozilla.org/MPL/2.0/.
 #include <Eigen/Dense>
-
+#include <pybind11/eigen.h>
+#include <pybind11/stl.h>
 #include "python_shared.h"
 
 
@@ -113,7 +114,7 @@ void python_export_igl(py::module &m)
 #include "py_igl/py_SolverStatus.cpp"
 #include "py_igl/py_active_set.cpp"
 #include "py_igl/py_adjacency_list.cpp"
-#include "py_igl/py_arap.cpp"
+// #include "py_igl/py_arap.cpp"
 #include "py_igl/py_avg_edge_length.cpp"
 #include "py_igl/py_barycenter.cpp"
 #include "py_igl/py_barycentric_coordinates.cpp"
@@ -145,7 +146,7 @@ void python_export_igl(py::module &m)
 #include "py_igl/py_find_cross_field_singularities.cpp"
 #include "py_igl/py_fit_rotations.cpp"
 #include "py_igl/py_floor.cpp"
-#include "py_igl/py_forward_kinematics.cpp"
+// #include "py_igl/py_forward_kinematics.cpp"
 #include "py_igl/py_gaussian_curvature.cpp"
 #include "py_igl/py_get_seconds.cpp"
 #include "py_igl/py_grad.cpp"
@@ -160,7 +161,7 @@ void python_export_igl(py::module &m)
 #include "py_igl/py_lscm.cpp"
 #include "py_igl/py_map_vertices_to_circle.cpp"
 #include "py_igl/py_massmatrix.cpp"
-#include "py_igl/py_min_quad_with_fixed.cpp"
+// #include "py_igl/py_min_quad_with_fixed.cpp"
 #include "py_igl/py_normalize_row_lengths.cpp"
 #include "py_igl/py_normalize_row_sums.cpp"
 #include "py_igl/py_parula.cpp"

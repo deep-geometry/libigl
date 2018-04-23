@@ -54,7 +54,7 @@ endif()
 ## Prepare the python library
 pybind11_add_module(pyigl
   python_shared.cpp
-  modules/py_vector.cpp
+  # modules/py_vector.cpp
   py_igl.cpp
   py_doc.cpp
 )

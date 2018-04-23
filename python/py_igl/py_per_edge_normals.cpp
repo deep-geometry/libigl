@@ -47,10 +47,7 @@ py::arg("V"), py::arg("F"), py::arg("weight"));
 m.def("per_edge_normals", []
 (
   const Eigen::MatrixXd& V,
-  const Eigen::MatrixXi& F,
-  Eigen::MatrixXd& N,
-  Eigen::MatrixXi& E,
-  Eigen::MatrixXi& EMAP
+  const Eigen::MatrixXi& F
 )
 {
   Eigen::MatrixXd N;

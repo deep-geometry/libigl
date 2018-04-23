@@ -24,7 +24,7 @@ m.def("find_cross_field_singularities", []
   const Eigen::MatrixXd &V,
   const Eigen::MatrixXi &F,
   const Eigen::MatrixXd &PD1,
-  const Eigen::MatrixXd &PD2
+  const Eigen::MatrixXd &PD2,
   bool isCombed
 )
 {

@@ -18,6 +18,6 @@ m.def("comb_frame_field", []
   Eigen::MatrixXd PD1_combed;
   Eigen::MatrixXd PD2_combed;
   igl::comb_frame_field(V,F,PD1,PD2,BIS1_combed,BIS2_combed,PD1_combed,PD2_combed);
-  return std::make_tuple(PD1out, PD2out);
+  return std::make_tuple(PD1_combed, PD2_combed);
 }, __doc_igl_comb_frame_field,
 py::arg("V"), py::arg("F"), py::arg("PD1"), py::arg("PD2"), py::arg("BIS1_combed"), py::arg("BIS2_combed"));

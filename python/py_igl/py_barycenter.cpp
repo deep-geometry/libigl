@@ -15,4 +15,4 @@ m.def("barycenter", []
   igl::barycenter(V,F,BC);
   return BC;
 }, __doc_igl_barycenter,
-py::arg("V"), py::arg("F");
+py::arg("V"), py::arg("F"));

@@ -16,8 +16,10 @@ AABB
 })
 .def("squared_distance", [](const igl::AABB<Eigen::MatrixXd,3>& tree, const Eigen::MatrixXd& V, const Eigen::MatrixXi& Ele, const Eigen::MatrixXd& P)
 {
-    Eigen::MatrixXd sqrD, Eigen::MatrixXi I, Eigen::MatrixXd C;
-    double dist = tree.squared_distance(V, Ele, P, sqrD, I, C);
-    return std::make_tuple(dist, sqrD, I, C);
+    Eigen::MatrixXd sqrD; 
+    Eigen::MatrixXi I; 
+    Eigen::MatrixXd C;
+    tree.squared_distance(V, Ele, P, sqrD, I, C);
+    return std::make_tuple(sqrD, I, C);
 })
 ;

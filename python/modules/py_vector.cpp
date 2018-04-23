@@ -632,15 +632,17 @@ void python_export_vector(py::module &m) {
     // py::implicitly_convertible<double, Eigen::VectorXi>();
 
     /* Bindings for MatrixXd */
+    // bind_eigen_2<Eigen::MatrixXd>(me, "MatrixXd");
     //py::implicitly_convertible<py::buffer, Eigen::MatrixXd>();
     //py::implicitly_convertible<double, Eigen::MatrixXd>();
 
     /* Bindings for MatrixXi */
+    // bind_eigen_2<Eigen::MatrixXi>(me, "MatrixXi");
     //py::implicitly_convertible<py::buffer, Eigen::MatrixXi>();
     //py::implicitly_convertible<double, Eigen::MatrixXi>();
 
     /* Bindings for MatrixXb */
-    bind_eigen_2<Eigen::Matrix<bool,Eigen::Dynamic,Eigen::Dynamic> > (me, "MatrixXb");
+    // bind_eigen_2<Eigen::Matrix<bool,Eigen::Dynamic,Eigen::Dynamic> > (me, "MatrixXb");
 
     /* Bindings for MatrixXuc */
     bind_eigen_2<Eigen::Matrix<unsigned char,Eigen::Dynamic,Eigen::Dynamic> > (me, "MatrixXuc");

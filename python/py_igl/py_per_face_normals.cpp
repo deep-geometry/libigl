@@ -17,7 +17,7 @@ m.def("per_face_normals", []
   igl::per_face_normals(V,F,Z,N);
   return N;
 }, __doc_igl_per_face_normals,
-py::arg("V"), py::arg("F"), py::arg("Z"), py::arg("N"));
+py::arg("V"), py::arg("F"), py::arg("Z"));
 
 m.def("per_face_normals", []
 (

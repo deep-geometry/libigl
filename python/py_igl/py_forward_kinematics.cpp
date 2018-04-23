@@ -29,9 +29,10 @@ m.def("forward_kinematics", []
   const RotationList& dQ
 )
 {
+  RotationList vQ;
   std::vector<Eigen::Vector3d> vTl;
   igl::forward_kinematics(C, BE, P, dQ, vQ, vTl);
-  return std::make_tuple(vQ, vTl)
+  return std::make_tuple(vQ, vTl);
 }, __doc_igl_forward_kinematics,
 py::arg("C"), py::arg("BE"), py::arg("P"), py::arg("dQ"));
 

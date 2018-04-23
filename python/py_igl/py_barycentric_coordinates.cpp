@@ -16,7 +16,7 @@ m.def("barycentric_coordinates", []
   const Eigen::MatrixXd& D
 )
 {
-  Eigen::MatrixXd& L
+  Eigen::MatrixXd L;
   igl::barycentric_coordinates(P, A, B, C, D, L);
   return L;
 }, __doc_igl_barycentric_coordinates,
@@ -30,7 +30,7 @@ m.def("barycentric_coordinates", []
   const Eigen::MatrixXd& C
 )
 {
-  Eigen::MatrixXd& L
+  Eigen::MatrixXd L;
   igl::barycentric_coordinates(P, A, B, C, L);
   return L;
 }, __doc_igl_barycentric_coordinates,
