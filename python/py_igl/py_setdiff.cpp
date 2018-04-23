@@ -8,11 +8,12 @@
 m.def("setdiff", []
 (
   const Eigen::MatrixXi& A,
-  const Eigen::MatrixXi& B,
-  Eigen::MatrixXi& C,
-  Eigen::MatrixXi& IA
+  const Eigen::MatrixXi& B
 )
 {
-  return igl::setdiff(A,B,C,IA);
+  Eigen::MatrixXi C;
+  Eigen::MatrixXi IA;
+  igl::setdiff(A,B,C,IA);
+  return std::make_tuple(C, IA);;
 }, __doc_igl_setdiff,
-py::arg("A"), py::arg("B"), py::arg("C"), py::arg("IA"));
+py::arg("A"), py::arg("B"));

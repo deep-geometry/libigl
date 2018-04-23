@@ -41,7 +41,7 @@ m.def("min_quad_with_fixed_solve", []
   assert_is_VectorX("Y",Y);
   assert_is_VectorX("Beq",Beq);
   igl::min_quad_with_fixed_solve(data,B,Y,Beq,Z,sol);
-  return tututu(Z, sol);
+  return std::make_tuple(Z, sol);
 }, __doc_igl_min_quad_with_fixed,
 py::arg("data"), py::arg("B"), py::arg("Y"), py::arg("Beq"));
 
@@ -70,14 +70,15 @@ m.def("min_quad_with_fixed", []
   const Eigen::MatrixXd& Y,
   const Eigen::SparseMatrix<double>& Aeq,
   const Eigen::MatrixXd& Beq,
-  const bool pd,
-  Eigen::MatrixXd& Z
+  const bool pd
 )
 {
+  Eigen::MatrixXd Z;
   assert_is_VectorX("B",B);
   assert_is_VectorX("known",known);
   assert_is_VectorX("Y",Y);
   assert_is_VectorX("Beq",Beq);
-  return igl::min_quad_with_fixed(A,B,known,Y,Aeq,Beq,pd,Z);
+  igl::min_quad_with_fixed(A,B,known,Y,Aeq,Beq,pd,Z);
+  return Z;
 }, __doc_igl_min_quad_with_fixed,
-py::arg("A"), py::arg("B"), py::arg("known"), py::arg("Y"), py::arg("Aeq"), py::arg("Beq"), py::arg("pd"), py::arg("Z"));
+py::arg("A"), py::arg("B"), py::arg("known"), py::arg("Y"), py::arg("Aeq"), py::arg("Beq"), py::arg("pd"));

@@ -7,11 +7,12 @@
 // obtain one at http://mozilla.org/MPL/2.0/.
 m.def("randperm", []
 (
-  int n,
-  Eigen::MatrixXi& I
+  int n
 )
 {
-  return igl::randperm(n, I);
+  Eigen::MatrixXi temp1;
+  igl::randperm(n, temp1);
+  return temp1;
 }, __doc_igl_randperm,
-py::arg("n"), py::arg("I"));
+py::arg("n"));
 

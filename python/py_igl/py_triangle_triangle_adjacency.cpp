@@ -8,21 +8,23 @@
 
 m.def("triangle_triangle_adjacency", []
 (
-  const Eigen::MatrixXi& F,
-  Eigen::MatrixXi& TT,
-  Eigen::MatrixXi& TTi
+  const Eigen::MatrixXi& F
 )
 {
-  return igl::triangle_triangle_adjacency(F, TT, TTi);
+  Eigen::MatrixXi TT;
+  Eigen::MatrixXi TTi;
+  igl::triangle_triangle_adjacency(F, TT, TTi);
+  return std::make_tuple(TT,TTi);
 }, __doc_igl_triangle_triangle_adjacency,
-py::arg("F"), py::arg("TT"), py::arg("TTi"));
+py::arg("F"));
 
 m.def("triangle_triangle_adjacency", []
 (
-  const Eigen::MatrixXi& F,
-  Eigen::MatrixXi& TT
+  const Eigen::MatrixXi& F
 )
 {
-  return igl::triangle_triangle_adjacency(F, TT);
+  Eigen::MatrixXi TT;
+  igl::triangle_triangle_adjacency(F, TT);
+  return TT;
 }, __doc_igl_triangle_triangle_adjacency,
-py::arg("F"), py::arg("TT"));
+py::arg("F"));

@@ -11,67 +11,59 @@ m.def("slice", []
 (
   const Eigen::SparseMatrix<double>& X,
   const Eigen::MatrixXi& R,
-  const Eigen::MatrixXi& C,
-  Eigen::SparseMatrix<double>& Y
+  const Eigen::MatrixXi& C
 )
 {
+  Eigen::SparseMatrix<double> Y;
   assert_is_VectorX("R",R);
   assert_is_VectorX("C",C);
-  return igl::slice(X,R,C,Y);
+  igl::slice(X,R,C,Y);
+  return Y;
 }, __doc_igl_slice,
-py::arg("X"), py::arg("R"), py::arg("C"), py::arg("Y"));
+py::arg("X"), py::arg("R"), py::arg("C"));
 
 m.def("slice", []
 (
   const Eigen::SparseMatrix<double>& X,
   const Eigen::MatrixXi& R,
-  const int& dim,
-  Eigen::SparseMatrix<double>& Y
+  const int& dim
 )
 {
+  Eigen::SparseMatrix<double> Y;
   assert_is_VectorX("R",R);
-  return igl::slice(X,R,dim,Y);
+  igl::slice(X,R,dim,Y);
+  return Y;
 }, __doc_igl_slice,
-py::arg("X"), py::arg("R"), py::arg("dim"), py::arg("Y"));
+py::arg("X"), py::arg("R"), py::arg("dim"));
 
 m.def("slice", []
 (
   const Eigen::MatrixXd& X,
   const Eigen::MatrixXi& R,
-  const Eigen::MatrixXi& C,
-  Eigen::MatrixXd& Y
+  const Eigen::MatrixXi& C
 )
 {
+  Eigen::MatrixXd Y;
   assert_is_VectorX("R",R);
   assert_is_VectorX("C",C);
-  return igl::slice(X,R,C,Y);
+  igl::slice(X,R,C,Y);
+  return Y;
 }, __doc_igl_slice,
-py::arg("X"), py::arg("R"), py::arg("C"), py::arg("Y"));
+py::arg("X"), py::arg("R"), py::arg("C"));
 
 m.def("slice", []
 (
   const Eigen::MatrixXd& X,
   const Eigen::MatrixXi& R,
-  const int dim,
-  Eigen::MatrixXd& Y
+  const int dim
 )
 {
+  Eigen::MatrixXd Y;
   assert_is_VectorX("R",R);
-  return igl::slice(X,R,dim,Y);
+  igl::slice(X,R,dim,Y);
+  return Y;
 }, __doc_igl_slice,
-py::arg("X"), py::arg("R"), py::arg("dim"), py::arg("Y"));
-
-m.def("slice", []
-(
-  const Eigen::MatrixXd& X,
-  const Eigen::MatrixXi& R,
-  Eigen::MatrixXd& Y
-)
-{
-  assert_is_VectorX("R",R);
-  return igl::slice(X,R,Y);
-}, __doc_igl_slice,
-py::arg("X"), py::arg("R"), py::arg("Y"));
+py::arg("X"), py::arg("R"), py::arg("dim"));
 
 m.def("slice", []
 (
@@ -79,77 +71,59 @@ m.def("slice", []
   const Eigen::MatrixXi& R
 )
 {
+  Eigen::MatrixXd Y;
   assert_is_VectorX("R",R);
-  return igl::slice(X,R);
+  igl::slice(X,R,Y);
+  return Y;
 }, __doc_igl_slice,
-py::arg("X"), py::arg("A"));
+py::arg("X"), py::arg("R"));
 
-m.def("slice", []
-(
-  const Eigen::MatrixXd& X,
-  const Eigen::MatrixXi& R,
-  const int& dim
-)
-{
-  assert_is_VectorX("R",R);
-  return igl::slice(X,R,dim);
-}, __doc_igl_slice,
-py::arg("X"), py::arg("R"), py::arg("dim"));
 
 // int
 m.def("slice", []
 (
   const Eigen::SparseMatrix<int>& X,
   const Eigen::MatrixXi& R,
-  const Eigen::MatrixXi& C,
-  Eigen::SparseMatrix<int>& Y
+  const Eigen::MatrixXi& C
 )
 {
+  Eigen::SparseMatrix<int> Y;
   assert_is_VectorX("R",R);
   assert_is_VectorX("C",C);
-  return igl::slice(X,R,C,Y);
+  igl::slice(X,R,C,Y);
+  return Y;
 }, __doc_igl_slice,
-py::arg("X"), py::arg("R"), py::arg("C"), py::arg("Y"));
+py::arg("X"), py::arg("R"), py::arg("C"));
 
 m.def("slice", []
 (
   const Eigen::SparseMatrix<int>& X,
   const Eigen::MatrixXi& R,
-  const int& dim,
-  Eigen::SparseMatrix<int>& Y
+  const int& dim
 )
 {
+  Eigen::SparseMatrix<int> Y;
   assert_is_VectorX("R",R);
-  return igl::slice(X,R,dim,Y);
+  igl::slice(X,R,dim,Y);
+  return Y;
 }, __doc_igl_slice,
-py::arg("X"), py::arg("R"), py::arg("dim"), py::arg("Y"));
+py::arg("X"), py::arg("R"), py::arg("dim"));
 
 m.def("slice", []
 (
   const Eigen::MatrixXi& X,
   const Eigen::MatrixXi& R,
-  const Eigen::MatrixXi& C,
-  Eigen::MatrixXi& Y
+  const Eigen::MatrixXi& C
 )
 {
+  Eigen::MatrixXi Y;
   assert_is_VectorX("R",R);
   assert_is_VectorX("C",C);
-  return igl::slice(X,R,C,Y);
+  igl::slice(X,R,C,Y);
+  return Y;
 }, __doc_igl_slice,
-py::arg("X"), py::arg("R"), py::arg("C"), py::arg("Y"));
+py::arg("X"), py::arg("R"), py::arg("C"));
 
-
-m.def("slice", []
-(
-  const Eigen::MatrixXi& X,
-  const Eigen::MatrixXi& R,
-  Eigen::MatrixXi& Y
-)
-{
-  assert_is_VectorX("R",R);
-  return igl::slice(X,R,Y);
-}, __doc_igl_slice,
-py::arg("X"), py::arg("R"), py::arg("Y"));
 
 m.def("slice", []
 (

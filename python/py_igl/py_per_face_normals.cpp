@@ -9,33 +9,36 @@ m.def("per_face_normals", []
 (
   const Eigen::MatrixXd& V,
   const Eigen::MatrixXi& F,
-  const Eigen::MatrixXd& Z,
-  Eigen::MatrixXd& N
+  const Eigen::MatrixXd& Z
 )
 {
+  Eigen::MatrixXd N;
   assert_is_VectorX("Z",Z);
-  return igl::per_face_normals(V,F,Z,N);
+  igl::per_face_normals(V,F,Z,N);
+  return N;
 }, __doc_igl_per_face_normals,
 py::arg("V"), py::arg("F"), py::arg("Z"), py::arg("N"));
 
 m.def("per_face_normals", []
 (
   const Eigen::MatrixXd& V,
-  const Eigen::MatrixXi& F,
-  Eigen::MatrixXd& N
+  const Eigen::MatrixXi& F
 )
 {
-  return igl::per_face_normals(V,F,N);
+  Eigen::MatrixXd N;
+  igl::per_face_normals(V,F,N);
+  return N;
 }, __doc_igl_per_face_normals,
-py::arg("V"), py::arg("F"), py::arg("N"));
+py::arg("V"), py::arg("F"));
 
 m.def("per_face_normals_stable", []
 (
   const Eigen::MatrixXd& V,
-  const Eigen::MatrixXi& F,
-  Eigen::MatrixXd& N
+  const Eigen::MatrixXi& F
 )
 {
-  return igl::per_face_normals_stable(V,F,N);
+  Eigen::MatrixXd N;
+  igl::per_face_normals_stable(V,F,N);
+  return N;
 }, __doc_igl_per_face_normals,
-py::arg("V"), py::arg("F"), py::arg("N"));
+py::arg("V"), py::arg("F"));

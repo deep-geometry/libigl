@@ -10,13 +10,14 @@
 m.def("quad_planarity", []
 (
   const Eigen::MatrixXd& V,
-  const Eigen::MatrixXi& F,
-  Eigen::MatrixXd& P
+  const Eigen::MatrixXi& F
 )
 {
+  Eigen::MatrixXd temp;
   Eigen::VectorXd Pv;
   igl::quad_planarity(V, F, Pv);
-  P = Pv;
+  temp = Pv;
+  return temp;
 }, __doc_igl_quad_planarity,
-py::arg("V"), py::arg("F"), py::arg("P"));
+py::arg("V"), py::arg("F"));
 

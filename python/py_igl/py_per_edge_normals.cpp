@@ -18,29 +18,31 @@ m.def("per_edge_normals", []
   const Eigen::MatrixXd& V,
   const Eigen::MatrixXi& F,
   const igl::PerEdgeNormalsWeightingType weight,
-  const Eigen::MatrixXd& FN,
-  Eigen::MatrixXd& N,
-  Eigen::MatrixXi& E,
-  Eigen::MatrixXi& EMAP
+  const Eigen::MatrixXd& FN
 )
 {
-  return igl::per_edge_normals(V, F, weight, FN, N, E, EMAP);
+  Eigen::MatrixXd N;
+  Eigen::MatrixXi E;
+  Eigen::MatrixXi EMAP;
+  igl::per_edge_normals(V, F, weight, FN, N, E, EMAP);
+  return std::make_tuple(N,E,EMAP);
 }, __doc_igl_per_edge_normals,
-py::arg("V"), py::arg("F"), py::arg("weight"), py::arg("FN"), py::arg("N"), py::arg("E"), py::arg("EMAP"));
+py::arg("V"), py::arg("F"), py::arg("weight"), py::arg("FN"));
 
 m.def("per_edge_normals", []
 (
   const Eigen::MatrixXd& V,
   const Eigen::MatrixXi& F,
-  const igl::PerEdgeNormalsWeightingType weight,
-  Eigen::MatrixXd& N,
-  Eigen::MatrixXi& E,
-  Eigen::MatrixXi& EMAP
+  const igl::PerEdgeNormalsWeightingType weight
 )
 {
-  return igl::per_edge_normals(V, F, weight, N, E, EMAP);
+    Eigen::MatrixXd N;
+  Eigen::MatrixXi E;
+  Eigen::MatrixXi EMAP;
+  igl::per_edge_normals(V, F, weight, N, E, EMAP);
+  return std::make_tuple(N,E,EMAP);
 }, __doc_igl_per_edge_normals,
-py::arg("V"), py::arg("F"), py::arg("weight"), py::arg("N"), py::arg("E"), py::arg("EMAP"));
+py::arg("V"), py::arg("F"), py::arg("weight"));
 
 m.def("per_edge_normals", []
 (
@@ -51,7 +53,11 @@ m.def("per_edge_normals", []
   Eigen::MatrixXi& EMAP
 )
 {
-  return igl::per_edge_normals(V, F, N, E, EMAP);
+  Eigen::MatrixXd N;
+  Eigen::MatrixXi E;
+  Eigen::MatrixXi EMAP;
+  igl::per_edge_normals(V, F, N, E, EMAP);
+  return std::make_tuple(N,E,EMAP);
 }, __doc_igl_per_edge_normals,
-py::arg("V"), py::arg("F"), py::arg("N"), py::arg("E"), py::arg("EMAP"));
+py::arg("V"), py::arg("F"));
 

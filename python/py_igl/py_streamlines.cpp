@@ -35,26 +35,26 @@ m.def("streamlines_init", []
   const Eigen::MatrixXi& F,
   const Eigen::MatrixXd& temp_field,
   const bool treat_as_symmetric,
-  igl::StreamlineData &data,
-  igl::StreamlineState &state,
   double percentage
 )
 {
-  return igl::streamlines_init(V, F, temp_field, treat_as_symmetric, data, state, percentage);
+  igl::StreamlineData data;
+  igl::StreamlineState state;
+  igl::streamlines_init(V, F, temp_field, treat_as_symmetric, data, state, percentage);
+  return std::make_tuple(data, state);
 
 },__doc_igl_streamlines_init,
-py::arg("V"), py::arg("F"), py::arg("temp_field"), py::arg("treat_as_symmetric"),
-py::arg("data"), py::arg("state"), py::arg("percentage")=0.3);
+py::arg("V"), py::arg("F"), py::arg("temp_field"), py::arg("treat_as_symmetric"), py::arg("percentage")=0.3);
 
 m.def("streamlines_next", []
 (
   const Eigen::MatrixXd& V,
   const Eigen::MatrixXi& F,
-  const igl::StreamlineData &data,
-  igl::StreamlineState &state
+  const igl::StreamlineData &data
 )
 {
-  return igl::streamlines_next(V, F, data, state);
-
+  igl::StreamlineState state;
+  igl::streamlines_next(V, F, data, state);
+  return state;
 },__doc_igl_streamlines_next,
-py::arg("V"), py::arg("F"), py::arg("data"), py::arg("state"));
+py::arg("V"), py::arg("F"), py::arg("data"));

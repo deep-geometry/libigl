@@ -17,46 +17,50 @@ m.def("per_vertex_normals", []
 (
   const Eigen::MatrixXd& V,
   const Eigen::MatrixXi& F,
+  const igl::PerVertexNormalsWeightingType weighting
+)
+{
+  Eigen::MatrixXd N;
+  igl::per_vertex_normals(V,F,weighting,N);
+  return N;
+}, __doc_igl_per_vertex_normals,
+py::arg("V"), py::arg("F"), py::arg("weighting"));
+
+m.def("per_vertex_normals", []
+(
+  const Eigen::MatrixXd& V,
+  const Eigen::MatrixXi& F
+)
+{
+  Eigen::MatrixXd N;
+  igl::per_vertex_normals(V,F,N);
+  return N;
+}, __doc_igl_per_vertex_normals,
+py::arg("V"), py::arg("F"));
+
+m.def("per_vertex_normals", []
+(
+  const Eigen::MatrixXd& V,
+  const Eigen::MatrixXi& F,
   const igl::PerVertexNormalsWeightingType weighting,
-  Eigen::MatrixXd& N
+  const Eigen::MatrixXd& FN
 )
 {
-  return igl::per_vertex_normals(V,F,weighting,N);
+  Eigen::MatrixXd N;
+  igl::per_vertex_normals(V,F,weighting,FN,N);
+  return N;
 }, __doc_igl_per_vertex_normals,
-py::arg("V"), py::arg("F"), py::arg("weighting"), py::arg("N"));
+py::arg("V"), py::arg("F"), py::arg("weighting"), py::arg("FN"));
 
 m.def("per_vertex_normals", []
 (
   const Eigen::MatrixXd& V,
   const Eigen::MatrixXi& F,
-  Eigen::MatrixXd& N
+  const Eigen::MatrixXd& FN
 )
 {
-  return igl::per_vertex_normals(V,F,N);
+  Eigen::MatrixXd N;
+  igl::per_vertex_normals(V,F,FN,N);
+  return N;
 }, __doc_igl_per_vertex_normals,
-py::arg("V"), py::arg("F"), py::arg("N"));
-
-m.def("per_vertex_normals", []
-(
-  const Eigen::MatrixXd& V,
-  const Eigen::MatrixXi& F,
-  const igl::PerVertexNormalsWeightingType weighting,
-  const Eigen::MatrixXd& FN,
-  Eigen::MatrixXd& N
-)
-{
-  return igl::per_vertex_normals(V,F,weighting,FN,N);
-}, __doc_igl_per_vertex_normals,
-py::arg("V"), py::arg("F"), py::arg("weighting"), py::arg("FN"), py::arg("N"));
-
-m.def("per_vertex_normals", []
-(
-  const Eigen::MatrixXd& V,
-  const Eigen::MatrixXi& F,
-  const Eigen::MatrixXd& FN,
-  Eigen::MatrixXd& N
-)
-{
-  return igl::per_vertex_normals(V,F,FN,N);
-}, __doc_igl_per_vertex_normals,
-py::arg("V"), py::arg("F"), py::arg("FN"), py::arg("N"));
+py::arg("V"), py::arg("F"), py::arg("FN"));

@@ -7,25 +7,27 @@
 // obtain one at http://mozilla.org/MPL/2.0/.
 m.def("unique_rows", []
 (
-  const Eigen::MatrixXd& A,
-  Eigen::MatrixXd& C,
-  Eigen::MatrixXi& IA,
-  Eigen::MatrixXi& IC
+  const Eigen::MatrixXd& A
 )
 {
-  return igl::unique_rows(A,C,IA,IC);
+  Eigen::MatrixXd C;
+  Eigen::MatrixXi IA;
+  Eigen::MatrixXi IC;
+  igl::unique_rows(A,C,IA,IC);
+  return std::make_tuple(C,IA,IC);
 }, __doc_igl_unique,
-py::arg("A"), py::arg("C"), py::arg("IA"), py::arg("IC"));
+py::arg("A"));
 
 m.def("unique_rows", []
 (
-  const Eigen::MatrixXi& A,
-  Eigen::MatrixXi& C,
-  Eigen::MatrixXi& IA,
-  Eigen::MatrixXi& IC
+  const Eigen::MatrixXi& A
 )
 {
-  return igl::unique_rows(A,C,IA,IC);
+  Eigen::MatrixXi C;
+  Eigen::MatrixXi IA;
+  Eigen::MatrixXi IC;
+  igl::unique_rows(A,C,IA,IC);
+  return std::make_tuple(C,IA,IC);
 }, __doc_igl_unique,
-py::arg("A"), py::arg("C"), py::arg("IA"), py::arg("IC"));
+py::arg("A"));
 

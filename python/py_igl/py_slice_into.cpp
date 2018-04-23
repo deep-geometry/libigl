@@ -9,54 +9,58 @@ m.def("slice_into", []
 (
   const Eigen::SparseMatrix<double>& X,
   const Eigen::MatrixXi& R,
-  const Eigen::MatrixXi& C,
-  Eigen::SparseMatrix<double>& Y
+  const Eigen::MatrixXi& C
 )
 {
+  Eigen::SparseMatrix<double> Y;
   assert_is_VectorX("R",R);
   assert_is_VectorX("C",C);
-  return igl::slice_into(X,R,C,Y);
+  igl::slice_into(X,R,C,Y);
+  return Y;
 }, __doc_igl_slice_into,
-py::arg("X"), py::arg("R"), py::arg("C"), py::arg("Y"));
+py::arg("X"), py::arg("R"), py::arg("C"));
 
 m.def("slice_into", []
 (
   const Eigen::MatrixXd& X,
   const Eigen::MatrixXi& R,
-  const Eigen::MatrixXi& C,
-  Eigen::MatrixXd& Y
+  const Eigen::MatrixXi& C
 )
 {
+  Eigen::MatrixXd Y;
   assert_is_VectorX("R",R);
   assert_is_VectorX("C",C);
-  return igl::slice_into(X,R,C,Y);
+  igl::slice_into(X,R,C,Y);
+  return Y;
 }, __doc_igl_slice_into,
-py::arg("X"), py::arg("R"), py::arg("C"), py::arg("Y"));
+py::arg("X"), py::arg("R"), py::arg("C"));
 
 m.def("slice_into", []
 (
   const Eigen::MatrixXd& X,
   const Eigen::MatrixXi& R,
-  const int& dim,
-  Eigen::MatrixXd& Y
+  const int& dim
 )
 {
+  Eigen::MatrixXd Y;
   assert_is_VectorX("R",R);
-  return igl::slice_into(X,R,dim,Y);
+  igl::slice_into(X,R,dim,Y);
+  return Y;
 }, __doc_igl_slice_into,
-py::arg("X"), py::arg("R"), py::arg("dim"), py::arg("Y"));
+py::arg("X"), py::arg("R"), py::arg("dim"));
 
 m.def("slice_into", []
 (
   const Eigen::MatrixXd& X,
-  const Eigen::MatrixXi& R,
-  Eigen::MatrixXd& Y
+  const Eigen::MatrixXi& R
 )
 {
+  Eigen::MatrixXd Y;
   assert_is_VectorX("R",R);
-  return igl::slice_into(X,R,Y);
+  igl::slice_into(X,R,Y);
+  return Y;
 }, __doc_igl_slice_into,
-py::arg("X"), py::arg("R"), py::arg("Y"));
+py::arg("X"), py::arg("R"));
 
 // int
 
@@ -64,51 +68,55 @@ m.def("slice_into", []
 (
   const Eigen::SparseMatrix<int>& X,
   const Eigen::MatrixXi& R,
-  const Eigen::MatrixXi& C,
-  Eigen::SparseMatrix<int>& Y
+  const Eigen::MatrixXi& C
 )
 {
+  Eigen::SparseMatrix<int> Y;
   assert_is_VectorX("R",R);
   assert_is_VectorX("C",C);
-  return igl::slice_into(X,R,C,Y);
+  igl::slice_into(X,R,C,Y);
+  return Y;
 }, __doc_igl_slice_into,
-py::arg("X"), py::arg("R"), py::arg("C"), py::arg("Y"));
+py::arg("X"), py::arg("R"), py::arg("C"));
 
 m.def("slice_into", []
 (
   const Eigen::MatrixXi& X,
   const Eigen::MatrixXi& R,
-  const Eigen::MatrixXi& C,
-  Eigen::MatrixXi& Y
+  const Eigen::MatrixXi& C
 )
 {
+  Eigen::MatrixXi Y;
   assert_is_VectorX("R",R);
   assert_is_VectorX("C",C);
-  return igl::slice_into(X,R,C,Y);
+  igl::slice_into(X,R,C,Y);
+  return Y;
 }, __doc_igl_slice_into,
-py::arg("X"), py::arg("R"), py::arg("C"), py::arg("Y"));
+py::arg("X"), py::arg("R"), py::arg("C"));
 
 m.def("slice_into", []
 (
   const Eigen::MatrixXi& X,
   const Eigen::MatrixXi& R,
-  const int& dim,
-  Eigen::MatrixXi& Y
+  const int& dim
 )
 {
+  Eigen::MatrixXi Y;
   assert_is_VectorX("R",R);
-  return igl::slice_into(X,R,dim,Y);
+  igl::slice_into(X,R,dim,Y);
+  return Y;
 }, __doc_igl_slice_into,
-py::arg("X"), py::arg("R"), py::arg("dim"), py::arg("Y"));
+py::arg("X"), py::arg("R"), py::arg("dim"));
 
 m.def("slice_into", []
 (
   const Eigen::MatrixXi& X,
-  const Eigen::MatrixXi& R,
-  Eigen::MatrixXi& Y
+  const Eigen::MatrixXi& R
 )
 {
+  Eigen::MatrixXi Y;
   assert_is_VectorX("R",R);
-  return igl::slice_into(X,R,Y);
+  igl::slice_into(X,R,Y);
+  return Y;
 }, __doc_igl_slice_into,
-py::arg("X"), py::arg("R"), py::arg("Y"));
+py::arg("X"), py::arg("R"));

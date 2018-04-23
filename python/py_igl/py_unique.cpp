@@ -7,25 +7,27 @@
 // obtain one at http://mozilla.org/MPL/2.0/.
 m.def("unique", []
 (
-  const Eigen::MatrixXd& A,
-  Eigen::MatrixXd& C,
-  Eigen::MatrixXi& IA,
-  Eigen::MatrixXi& IC
+  const Eigen::MatrixXd& A
 )
 {
-  return igl::unique(A,C,IA,IC);
+  Eigen::MatrixXd C;
+  Eigen::MatrixXi IA;
+  Eigen::MatrixXi IC;
+  igl::unique(A,C,IA,IC);
+  return std::make_tuple(C,IA,IC);
 }, __doc_igl_unique,
-py::arg("A"), py::arg("C"), py::arg("IA"), py::arg("IC"));
+py::arg("A"));
 
 m.def("unique", []
 (
-  const Eigen::MatrixXd& A,
-  Eigen::MatrixXd& C
+  const Eigen::MatrixXd& A
 )
 {
-  return igl::unique(A,C);
+  Eigen::MatrixXd C;
+  igl::unique(A,C);
+  return C;
 }, __doc_igl_unique,
-py::arg("A"), py::arg("C"));
+py::arg("A"));
 
 //m.def("unique", []
 //(
@@ -55,25 +57,27 @@ py::arg("A"), py::arg("C"));
 
 m.def("unique", []
 (
-  const Eigen::MatrixXi& A,
-  Eigen::MatrixXi& C,
-  Eigen::MatrixXi& IA,
-  Eigen::MatrixXi& IC
+  const Eigen::MatrixXi& A
 )
 {
-  return igl::unique(A,C,IA,IC);
+  Eigen::MatrixXi C;
+  Eigen::MatrixXi IA;
+  Eigen::MatrixXi IC;
+  igl::unique(A,C,IA,IC);
+  return std::make_tuple(C,IA,IC);
 }, __doc_igl_unique,
-py::arg("A"), py::arg("C"), py::arg("IA"), py::arg("IC"));
+py::arg("A"));
 
 m.def("unique", []
 (
-  const Eigen::MatrixXi& A,
-  Eigen::MatrixXi& C
+  const Eigen::MatrixXi& A
 )
 {
-  return igl::unique(A,C);
+  Eigen::MatrixXi C;
+  igl::unique(A,C);
+  return C;
 }, __doc_igl_unique,
-py::arg("A"), py::arg("C"));
+py::arg("A"));
 
 //m.def("unique", []
 //(

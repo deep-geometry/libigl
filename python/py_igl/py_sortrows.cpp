@@ -8,23 +8,25 @@
 m.def("sortrows", []
 (
   const Eigen::MatrixXd& X,
-  const bool ascending,
-  Eigen::MatrixXd& Y,
-  Eigen::MatrixXi& I
+  const bool ascending
 )
 {
-  return igl::sortrows(X,ascending,Y,I);
+  Eigen::MatrixXd Y;
+  Eigen::MatrixXi I;
+  igl::sortrows(X,ascending,Y,I);
+  return std::make_tuple(Y,I);
 }, __doc_igl_sortrows,
-py::arg("X"), py::arg("ascending"), py::arg("Y"), py::arg("I"));
+py::arg("X"), py::arg("ascending"));
 
 m.def("sortrows", []
 (
   const Eigen::MatrixXi& X,
-  const bool ascending,
-  Eigen::MatrixXi& Y,
-  Eigen::MatrixXi& I
+  const bool ascending
 )
 {
-  return igl::sortrows(X,ascending,Y,I);
+  Eigen::MatrixXi Y;
+  Eigen::MatrixXi I;
+  igl::sortrows(X,ascending,Y,I);
+  return std::make_tuple(Y,I);
 }, __doc_igl_sortrows,
-py::arg("X"), py::arg("ascending"), py::arg("Y"), py::arg("I"));
+py::arg("X"), py::arg("ascending"));
