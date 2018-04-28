@@ -16,6 +16,7 @@
 #include <igl/SolverStatus.h>
 #include <igl/active_set.h>
 #include <igl/adjacency_list.h>
+#include <igl/adjacency_matrix.h>
 #include <igl/arap.h>
 #include <igl/avg_edge_length.h>
 #include <igl/barycenter.h>
