@@ -119,6 +119,7 @@ void python_export_igl(py::module &m)
 #include "py_igl/py_SolverStatus.cpp"
 #include "py_igl/py_active_set.cpp"
 #include "py_igl/py_adjacency_list.cpp"
+#include "py_igl/py_adjacency_matrix.cpp"
 #include "py_igl/py_arap.cpp"
 #include "py_igl/py_avg_edge_length.cpp"
 #include "py_igl/py_barycenter.cpp"
