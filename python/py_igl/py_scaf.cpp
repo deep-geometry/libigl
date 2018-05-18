@@ -10,6 +10,8 @@ py::class_<igl::SCAFData> SCAFData(m, "SCAFData");
 
 SCAFData
 .def(py::init<>())
+.def_readonly("energy", &igl::SCAFData::energy)
+.def_readonly("w_uv", &igl::SCAFData::w_uv)
 ;
 
 m.def("scaf_precompute", [](

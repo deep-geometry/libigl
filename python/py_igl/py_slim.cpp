@@ -10,6 +10,8 @@ py::class_<igl::SLIMData> SLIMData(m, "SLIMData");
 
 SLIMData
 .def(py::init<>())
+.def_readonly("energy", &igl::SLIMData::energy)
+.def_readonly("V_o", &igl::SLIMData::V_o)
 ;
 
 m.def("slim_precompute", 

@@ -657,7 +657,10 @@ IGL_INLINE Eigen::MatrixXd igl::scaf_solve(SCAFData &s, int iter_num)
     s.rect_frame_V = Eigen::MatrixXd();
     igl::scaf::mesh_improve(s);
 
-    double new_weight = s.mesh_measure * s.energy / (s.sf_num * 100);
+    double offset = 0;
+    if (s.slim_energy == igl::MappingEnergyType::SYMMETRIC_DIRICHLET)
+      offset = 4;
+    double new_weight = s.mesh_measure * (s.energy - offset) / (s.sf_num * 100);
     s.scaffold_factor = new_weight;
     igl::scaf::update_scaffold(s);
 

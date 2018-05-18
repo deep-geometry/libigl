@@ -59,12 +59,12 @@ namespace igl
       std::vector<int> component_sizes;
       std::vector<int> bnd_sizes;
     
-        // reweightedARAP interior variables.
-        bool has_pre_calc = false;
-        Eigen::SparseMatrix<double> Dx_s, Dy_s, Dz_s;
-        Eigen::SparseMatrix<double> Dx_m, Dy_m, Dz_m;
-        Eigen::MatrixXd Ri_m, Ji_m, Ri_s, Ji_s;
-        Eigen::MatrixXd W_m, W_s;
+      // reweightedARAP interior variables.
+      bool has_pre_calc = false;
+      Eigen::SparseMatrix<double> Dx_s, Dy_s, Dz_s;
+      Eigen::SparseMatrix<double> Dx_m, Dy_m, Dz_m;
+      Eigen::MatrixXd Ri_m, Ji_m, Ri_s, Ji_s;
+      Eigen::MatrixXd W_m, W_s;
     };
 
 
