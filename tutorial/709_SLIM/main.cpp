@@ -20,6 +20,8 @@
 #include <igl/is_edge_manifold.h>
 #include <igl/doublearea.h>
 #include <igl/cat.h>
+#include <igl/MappingEnergyType.h>
+
 
 #include <stdlib.h>
 
@@ -95,9 +97,9 @@ void param_2d_demo_iter(igl::opengl::glfw::Viewer& viewer) {
 
     cout << "initialized parametrization" << endl;
 
-    sData.slim_energy = igl::SLIMData::SYMMETRIC_DIRICHLET;
+    sData.slim_energy = igl::MappingEnergyType::SYMMETRIC_DIRICHLET;
     Eigen::VectorXi b; Eigen::MatrixXd bc;
-    slim_precompute(V,F,uv_init,sData, igl::SLIMData::SYMMETRIC_DIRICHLET, b,bc,0);
+    slim_precompute(V,F,uv_init,sData, igl::MappingEnergyType::SYMMETRIC_DIRICHLET, b,bc,0);
 
     uv_scale_param = 15 * (1./sqrt(sData.mesh_area));
     viewer.data().set_mesh(V, F);
@@ -128,7 +130,7 @@ void soft_const_demo_iter(igl::opengl::glfw::Viewer& viewer) {
     Eigen::VectorXi b; Eigen::MatrixXd bc;
     get_soft_constraint_for_circle(V_0,F,b,bc);
     double soft_const_p = 1e5;
-    slim_precompute(V,F,V_0,sData,igl::SLIMData::SYMMETRIC_DIRICHLET,b,bc,soft_const_p);
+    slim_precompute(V,F,V_0,sData,igl::MappingEnergyType::SYMMETRIC_DIRICHLET,b,bc,soft_const_p);
 
     viewer.data().set_mesh(V, F);
     viewer.core.align_camera_center(V,F);
@@ -154,7 +156,7 @@ void deform_3d_demo_iter(igl::opengl::glfw::Viewer& viewer) {
 
     double soft_const_p = 1e5;
     sData.exp_factor = 5.0;
-    slim_precompute(V,F,V_0,sData,igl::SLIMData::EXP_CONFORMAL,b,bc,soft_const_p);
+    slim_precompute(V,F,V_0,sData,igl::MappingEnergyType::EXP_CONFORMAL,b,bc,soft_const_p);
     //cout << "precomputed" << endl;
 
     first_iter = false;

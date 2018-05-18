@@ -315,25 +315,15 @@ void compute_jacobians(SCAFData &s, const Eigen::MatrixXd &V_new, bool whole)
     comp_J2(V_new, s.Dx_s, s.Dy_s, s.Ji_s);
 }
 
-double compute_energy_from_jacobians(const Eigen::MatrixXd &Ji,
-                                     const Eigen::VectorXd &areas,
-                                     igl::MappingEnergyType energy_type)
-{
-  double energy = 0;
-  if (energy_type == igl::MappingEnergyType::SYMMETRIC_DIRICHLET)
-    energy = -4; // comply with paper description
-  return energy + igl::mapping_energy_with_jacobians(Ji, areas, energy_type, 0);
-}
-
 double compute_energy(SCAFData &s, Eigen::MatrixXd &w_uv, bool whole)
 {
   if (w_uv.rows() != s.v_num)
     assert(!whole);
   compute_jacobians(s, w_uv, whole);
-  double energy = compute_energy_from_jacobians(s.Ji_m, s.m_M, s.slim_energy);
+  double energy = igl::mapping_energy_with_jacobians(s.Ji_m, s.m_M, s.slim_energy, 0);
 
   if (whole)
-    energy += compute_energy_from_jacobians(s.Ji_s, s.s_M, s.scaf_energy);
+    energy += igl::mapping_energy_with_jacobians(s.Ji_s, s.s_M, s.scaf_energy, 0);
   // soft constraints energy
   for (auto const &x : s.soft_cons)
     energy += s.soft_const_p * (x.second - s.w_uv.row(x.first)).squaredNorm();

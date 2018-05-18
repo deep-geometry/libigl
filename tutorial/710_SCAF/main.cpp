@@ -9,6 +9,8 @@
 #include <igl/doublearea.h>
 #include <igl/PI.h>
 #include <igl/flipped_triangles.h>
+#include <igl/read_triangle_mesh.h>
+#include <igl/MappingEnergyType.h>
 
 #include "tutorial_shared_path.h"
 
@@ -31,7 +33,7 @@ bool key_down(igl::opengl::glfw::Viewer& viewer, unsigned char key, int modifier
   if (key == ' ')
   {
     timer.start();
-    igl::scaf_solve(scaf_data, 1);
+    igl::scaf_solve(scaf_data, 10);
     std::cout << "time = " << timer.getElapsedTime() << std::endl;
   }
 
@@ -58,8 +60,8 @@ bool key_down(igl::opengl::glfw::Viewer& viewer, unsigned char key, int modifier
 int main(int argc, char *argv[])
 {
   using namespace std;
-  // Load a mesh in OFF format
-  igl::readOBJ(TUTORIAL_SHARED_PATH "/camel_b.obj", V, F);
+  // Load a mesh
+  igl::read_triangle_mesh("/Users/zhongshi/Workspace/libigl/python/failscaf.obj", V, F);
 
   Eigen::MatrixXd bnd_uv, uv_init;
 
@@ -97,7 +99,7 @@ int main(int argc, char *argv[])
   }
 
   Eigen::VectorXi b; Eigen::MatrixXd bc;
-  igl::scaf_precompute(V, F, uv_init, scaf_data, igl::SLIMData::SYMMETRIC_DIRICHLET, b, bc, 0);
+  igl::scaf_precompute(V, F, uv_init, scaf_data, igl::MappingEnergyType::SYMMETRIC_DIRICHLET, b, bc, 0);
 
   // Plot the mesh
   igl::opengl::glfw::Viewer viewer;
@@ -113,6 +115,7 @@ int main(int argc, char *argv[])
   viewer.data().show_texture = true;
 
 
+igl::scaf_solve(scaf_data, 10);
   std::cerr << "Press space for running an iteration." << std::endl;
   std::cerr << "Press 1 for Mesh 2 for UV" << std::endl;
 
