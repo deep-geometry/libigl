@@ -325,15 +325,6 @@ double compute_energy_from_jacobians(const Eigen::MatrixXd &Ji,
   return energy + igl::mapping_energy_with_jacobians(Ji, areas, energy_type, 0);
 }
 
-double compute_soft_constraint_energy(const SCAFData &s)
-{
-  double e = 0;
-  for (auto const &x : s.soft_cons)
-    e += s.soft_const_p * (x.second - s.w_uv.row(x.first)).squaredNorm();
-
-  return e;
-}
-
 double compute_energy(SCAFData &s, Eigen::MatrixXd &w_uv, bool whole)
 {
   if (w_uv.rows() != s.v_num)
@@ -343,7 +334,10 @@ double compute_energy(SCAFData &s, Eigen::MatrixXd &w_uv, bool whole)
 
   if (whole)
     energy += compute_energy_from_jacobians(s.Ji_s, s.s_M, s.scaf_energy);
-  energy += compute_soft_constraint_energy(s);
+  // soft constraints energy
+  for (auto const &x : s.soft_cons)
+    energy += s.soft_const_p * (x.second - s.w_uv.row(x.first)).squaredNorm();
+
   return energy;
 }
 
@@ -565,8 +559,7 @@ void solve_weighted_arap(SCAFData &s, Eigen::MatrixXd &uv)
   Eigen::SparseMatrix<double> L;
   Eigen::VectorXd rhs;
 
-  // fixed frame solving:
-  // x_e as the fixed frame, x_u for unknowns (mesh + unknown scaffold)
+  // fixed frame solving: https://cs.nyu.edu/~panozzo/gp18/Assignment4.pdf, page 27
   // min ||(A_u*x_u + A_e*x_e) - b||^2
   // => A_u'*A_u*x_u  = Au'* (b - A_e*x_e) := Au'* b_u
   //
@@ -576,7 +569,6 @@ void solve_weighted_arap(SCAFData &s, Eigen::MatrixXd &uv)
   // (Not just at the end, since x_all is flattened along dimensions)
   // L = A_m'*A_m + A_s'*A_s + soft + proximal
   // rhs = A_m'* b_m + A_s' * b_s + soft + proximal
-  //
   Eigen::SparseMatrix<double> L_m, L_s;
   Eigen::VectorXd rhs_m, rhs_s;
   build_surface_linear_system(s, L_m, rhs_m);  // complete Am, with soft
