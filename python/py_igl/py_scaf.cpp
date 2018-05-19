@@ -23,6 +23,8 @@ m.def("scaf_precompute", [](
         Eigen::MatrixXi& b,
         Eigen::MatrixXd& bc,
         double soft_p) {
+          assert_not_empty("V_init", V_init);
+          ssert_is_VectorX("b", b);
           Eigen::VectorXi new_b = Eigen::Map<Eigen::VectorXi>(b.data(), b.size());
           return igl::scaf_precompute(V,F,V_init, data, slim_energy, new_b, bc, soft_p);
         }, __doc_igl_scaf_precompute, 

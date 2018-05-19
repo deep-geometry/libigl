@@ -17,6 +17,12 @@
 #include "py_doc.h"
 #include "modules/py_typedefs.h"
 
+template<typename Scalar>
+void assert_not_empty(const std::string name, const Eigen::PlainObjectBase<Scalar>& v)
+{
+  if (v.size() == 0)
+    throw std::runtime_error(name + " must not be empty.");
+}
 
 template<typename Scalar>
 void assert_is_VectorX(const std::string name, const Eigen::PlainObjectBase<Scalar>& v)
