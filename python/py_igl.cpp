@@ -28,6 +28,7 @@
 #include <igl/boundary_loop.h>
 #include <igl/cat.h>
 #include <igl/collapse_edge.h>
+#include <igl/collapse_small_triangles.h>
 #include <igl/colon.h>
 #include <igl/column_to_quats.h>
 #include <igl/comb_cross_field.h>
@@ -137,6 +138,7 @@ void python_export_igl(py::module &m)
 #include "py_igl/py_boundary_loop.cpp"
 #include "py_igl/py_cat.cpp"
 #include "py_igl/py_collapse_edge.cpp"
+#include "py_igl/py_collapse_small_triangles.cpp"
 #include "py_igl/py_colon.cpp"
 #include "py_igl/py_column_to_quats.cpp"
 #include "py_igl/py_comb_cross_field.cpp"
