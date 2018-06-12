@@ -28,6 +28,7 @@
 #include <igl/boundary_loop.h>
 #include <igl/cat.h>
 #include <igl/collapse_edge.h>
+#include <igl/collapse_small_triangles.h>
 #include <igl/colon.h>
 #include <igl/column_to_quats.h>
 #include <igl/comb_cross_field.h>
@@ -85,17 +86,22 @@
 #include <igl/readMESH.h>
 #include <igl/readOBJ.h>
 #include <igl/readOFF.h>
+#include <igl/readPLY.h>
 #include <igl/readTGF.h>
 #include <igl/read_triangle_mesh.h>
 #include <igl/remove_duplicate_vertices.h>
 #include <igl/remove_unreferenced.h>
 #include <igl/rotate_vectors.h>
+#include <igl/scaf.h>
+#include <igl/seam_edges.h>
 #include <igl/setdiff.h>
+#include <igl/shape_diameter_function.h>
 #include <igl/signed_distance.h>
 #include <igl/slice.h>
 #include <igl/slice_into.h>
 #include <igl/slice_mask.h>
 #include <igl/slice_tets.h>
+#include <igl/slim.h>
 #include <igl/sortrows.h>
 #include <igl/triangle_triangle_adjacency.h>
 #include <igl/unique.h>
@@ -108,6 +114,7 @@
 #include <igl/readPLY.h>
 #include <igl/write_triangle_mesh.h>
 #include <igl/seam_edges.h>
+#include <igl/MappingEnergyType.h>
 
 void python_export_igl(py::module &m)
 {
@@ -131,6 +138,7 @@ void python_export_igl(py::module &m)
 #include "py_igl/py_boundary_loop.cpp"
 #include "py_igl/py_cat.cpp"
 #include "py_igl/py_collapse_edge.cpp"
+#include "py_igl/py_collapse_small_triangles.cpp"
 #include "py_igl/py_colon.cpp"
 #include "py_igl/py_column_to_quats.cpp"
 #include "py_igl/py_comb_cross_field.cpp"
@@ -188,17 +196,22 @@ void python_export_igl(py::module &m)
 #include "py_igl/py_readMESH.cpp"
 #include "py_igl/py_readOBJ.cpp"
 #include "py_igl/py_readOFF.cpp"
+#include "py_igl/py_readPLY.cpp"
 #include "py_igl/py_readTGF.cpp"
 #include "py_igl/py_read_triangle_mesh.cpp"
 #include "py_igl/py_remove_unreferenced.cpp"
 #include "py_igl/py_remove_duplicate_vertices.cpp"
 #include "py_igl/py_rotate_vectors.cpp"
+#include "py_igl/py_scaf.cpp"
+#include "py_igl/py_seam_edges.cpp"
 #include "py_igl/py_setdiff.cpp"
+#include "py_igl/py_shape_diameter_function.cpp"
 #include "py_igl/py_signed_distance.cpp"
 #include "py_igl/py_slice.cpp"
 #include "py_igl/py_slice_into.cpp"
 #include "py_igl/py_slice_mask.cpp"
 #include "py_igl/py_slice_tets.cpp"
+#include "py_igl/py_slim.cpp"
 #include "py_igl/py_sortrows.cpp"
 #include "py_igl/py_triangle_triangle_adjacency.cpp"
 #include "py_igl/py_unique.cpp"
@@ -211,4 +224,5 @@ void python_export_igl(py::module &m)
 #include "py_igl/py_readPLY.cpp"
 #include "py_igl/py_write_triangle_mesh.cpp"
 #include "py_igl/py_seam_edges.cpp"
+#include "py_igl/py_MappingEnergyType.cpp"
 }

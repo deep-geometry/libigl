@@ -1235,6 +1235,20 @@ const char *__doc_igl_setdiff = R"igl_Qu8mg5v7(// Set difference of elements of 
   //   C  (k<=m)-long vector of unique elements appearing in A but not in B
   //   IA  (k<=m)-long list of indices into A so that C = A(IA)
   //)igl_Qu8mg5v7";
+const char *__doc_igl_shape_diameter_function = R"igl_Qu8mg5v7(// Compute shape diamater function per given point. In the parlence of the
+  // paper "Consistent Mesh Partitioning and Skeletonisation using the Shape
+  // Diameter Function" [Shapiro et al. 2008], this implementation uses a 180°
+  // cone and a _uniform_ average (_not_ a average weighted by inverse angles).
+  //
+  // Inputs:
+  //    shoot_ray  function handle that outputs hits of a given ray against a
+  //      mesh (embedded in function handles as captured variable/data)
+  //    P  #P by 3 list of origin points
+  //    N  #P by 3 list of origin normals
+  // Outputs:
+  //    S  #P list of shape diamater function values between bounding box
+  //    diagonal (perfect sphere) and 0 (perfect needle hook)
+  //)igl_Qu8mg5v7";
 const char *__doc_igl_signed_distance = R"igl_Qu8mg5v7(// Computes signed distance to a mesh
   //
   // Inputs:
@@ -1545,3 +1559,31 @@ const char *__doc_igl_seam_edges=R"igl_Qu8mg5v7(// Finds all UV-space boundaries
   //       F[ foldovers( i, 0 ), foldovers( i, 1 ) ], F[ foldovers( i, 0 ), (foldovers( i, 1 ) + 1) % 3 ]
   //     and the other side is the edge:
   //       F[ foldovers( i, 2 ), foldovers( i, 3 ) ], F[ foldovers( i, 2 ), (foldovers( i, 3 ) + 1) % 3 ])igl_Qu8mg5v7";
+
+const char *__doc_igl_scaf_precompute = R"igl_Qu8mg5v7( // Compute necessary information to start using SCAF
+  // Inputs:
+  //		V           #V by 3 list of mesh vertex positions
+  //		F           #F by 3/3 list of mesh faces (triangles/tets)
+  //    data          igl::SCAFData
+  //    slim_energy Energy type to minimize
+  //    b           list of boundary indices into V (soft constraint)
+  //    bc          #b by dim list of boundary conditions (soft constraint)
+  //    soft_p      Soft penalty factor (can be zero))igl_Qu8mg5v7";
+
+const char *__doc_igl_scaf_solve = R"igl_Qu8mg5v7(
+  // Run iter_num iterations of SCAF, with precomputed data
+  // Outputs:
+  //    V_o (in SLIMData): #V by dim list of mesh vertex positions)igl_Qu8mg5v7";
+
+const char *__doc_igl_slim_precompute = R"igl_Qu8mg5v7( // Compute necessary information to start using SLIM
+  // Inputs:
+  //		V           #V by 3 list of mesh vertex positions
+  //		F           #F by 3/3 list of mesh faces (triangles/tets)
+  //    b           list of boundary indices into V
+  //    bc          #b by dim list of boundary conditions
+  //    soft_p      Soft penalty factor (can be zero)
+  //    slim_energy Energy to minimize)igl_Qu8mg5v7";
+
+const char *__doc_igl_slim_solve = R"igl_Qu8mg5v7( // Run iter_num iterations of SLIM, with precomputed data
+  // Outputs: 
+  //    V_o (in SLIMData): #V by dim list of mesh vertex positions)igl_Qu8mg5v7";
